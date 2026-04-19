@@ -1,0 +1,2503 @@
+﻿[
+    {
+        "id": "iiot_test_group",
+        "type": "group",
+        "z": "ace48f1fe8a31284",
+        "name": "L001",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "mqtt_control_in",
+            "control_adapter",
+            "32447efece5e33e2",
+            "68c7630a3a262ca9",
+            "b8b60be1a93a9a01",
+            "8be001a361f1ae95",
+            "8876b8f744f28dbc",
+            "4d6c4bd667b04b78",
+            "sql_queue",
+            "0c6801975e1759b8",
+            "cab856cda666ff60",
+            "d70923d22d558e81",
+            "531980ab99ccdc75",
+            "89c8494c5ac982cb",
+            "83972aefb1038366",
+            "b4692ff5921814ce",
+            "533feed1144f34e2",
+            "d9f560cb57814997",
+            "8971453386fb4b52",
+            "7b9b20c065f62472",
+            "0b2d7bc56eb85284",
+            "b0ae4b94e932f63e",
+            "eac14f2414bdb4c4",
+            "ed666b23d8f7bb81",
+            "2c0160b45889d90c",
+            "442a92277c4a2440",
+            "54c0f58df9a15463",
+            "4806eb7137f4f23e",
+            "4749ff74f7de9fbb"
+        ],
+        "x": 514,
+        "y": 19,
+        "w": 1992,
+        "h": 622
+    },
+    {
+        "id": "acq_v4_5_final",
+        "type": "subflow",
+        "name": "V4.5_閺嶅洤鍣柌鍥肠鐏?閸掑棛鐝涙潪顔款嚄)",
+        "info": "閸掑棛鐝涘蹇旂仸閺嬪嫸绱癉I/缁変即鍣?RFID 妞ゅ搫绨潪顔款嚄閵嗗倹鏁幐?LED ASCII 閸愭瑥鍙嗛妴鍌氼樆闁劑鈧俺绻冮悳顖氼暔閸欐﹢鍣洪柊宥囩枂 IP閵?",
+        "category": "閼奉亜鐣炬稊?",
+        "in": [
+            {
+                "x": 60,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "v45_do_conv"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1620,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "59c8c021dc180f7f",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1380,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "3d6bea8e28bfeb98",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1640,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "cf9358f0f164f766",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "IO_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "CZ_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "RFID_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "LED_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "UNIT_ID",
+                "type": "num",
+                "value": "1"
+            },
+            {
+                "name": "STATION_NUM",
+                "type": "str",
+                "value": ""
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99",
+        "icon": "node-red/bridge.png"
+    },
+    {
+        "id": "v45_ticker",
+        "type": "inject",
+        "z": "acq_v4_5_final",
+        "name": "200ms鐟欙箑褰?",
+        "props": [],
+        "repeat": "0.2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "2452439da843b9a4",
+                "3061cec18cc95af4"
+            ]
+        ]
+    },
+    {
+        "id": "v45_get_di",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_5_final",
+        "name": "IO濡€虫健鐠囪褰?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "c43e0d2c7e297fce",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "f22637065db44ac5"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "v45_get_weight",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_5_final",
+        "name": "缁変即鍣哥拠璇插絿",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "7cedcca290adff11",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 520,
+        "y": 200,
+        "wires": [
+            [
+                "5f9e6f3403b05098"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "v45_get_rfid",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_5_final",
+        "name": "RFID鐠囪褰?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "c757b35fdd0236f4",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 520,
+        "y": 240,
+        "wires": [
+            [
+                "6fcd174e518f2d30"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "v45_led_ascii",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "LED濞搭喚鍋ｆ潪鐝筍CII",
+        "func": "let num = msg.payload;\nlet str = (Math.round(num * 10) / 10).toFixed(1);\nif (str.length > 6) str = str.substring(0, 6);\n\nlet res = new Array(6).fill(48); // 婵夘偄鍘?ASCII '0'\nlet codes = [];\nfor (let i = 0; i < str.length; i++) codes.push(str.charCodeAt(i));\n\nconst offset = 6 - codes.length;\nfor (let i = 0; i < codes.length; i++) {\n    if (offset + i >= 0) res[offset + i] = codes[i];\n}\n\nmsg.payload = { value: res, fc: 16, unitid: 1, address: 0, quantity: 6 };\nreturn msg;",
+        "outputs": 1,
+        "x": 1170,
+        "y": 300,
+        "wires": [
+            [
+                "v45_led_write"
+            ]
+        ]
+    },
+    {
+        "id": "v45_led_write",
+        "type": "modbus-flex-write",
+        "z": "acq_v4_5_final",
+        "name": "LED閺勫墽銇氶崘娆忓弳",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "server": "abc5843d83e186e5",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 1390,
+        "y": 280,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "v45_do_conv",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "DO閹貉冨煑娑撳顢?",
+        "func": "/**\n * DO閹貉冨煑娑撳顢?(v4.4.0 濞撳懘娴傞懘澶婂暱閻?\n * 鏉堟挸鍙嗛敍姝畇g.relays = {\n *   闁插洭顥LY, 閸旂姵鏋LY, 濞撳懏鏋LY, 婢跺秳缍匯LY, 濞撳懘娴俁LY,\n *   Feeding_led, Adding_led, Clearing_led\n * }\n * 鏉堟挸鍤敍姝乷dbus FC15 閸?鐠侯垳鍤庨崷?(address 0, quantity 8)\n * 闁岸浜鹃弰鐘茬殸閿涙O[0-4]=缂佈呮暩閸? DO[5-7]=LED閹稿洨銇氶悘鐥媙 */\nconst r = msg.relays;\nif (!r || typeof r !== 'object') return null;\n\nconst cur = [\n    !!r[\"闁插洭顥LY\"],       // DO[0]\n    !!r[\"閸旂姵鏋LY\"],       // DO[1]\n    !!r[\"濞撳懏鏋LY\"],       // DO[2]\n    !!r[\"婢跺秳缍匯LY\"],       // DO[3]\n    !!r[\"濞撳懘娴俁LY\"],       // DO[4]\n    !!r[\"Feeding_led\"],   // DO[5] / LED[0] 闁插洭顥ら幐鍥┿仛\n    !!r[\"Adding_led\"],    // DO[6] / LED[1] 閸旂姵鏋￠幐鍥┿仛\n    !!r[\"Clearing_led\"]   // DO[7] / LED[2] 濞撳懏鏋￠幐鍥┿仛\n];\n\nlet last = context.get('L') || [];\nif (cur.every((v, i) => v === last[i])) return null;\n\ncontext.set('L', cur);\nmsg.payload = { value: cur, fc: 15, unitid: 1, address: 0, quantity: 8 };\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "v45_do_write"
+            ]
+        ]
+    },
+    {
+        "id": "v45_do_write",
+        "type": "modbus-flex-write",
+        "z": "acq_v4_5_final",
+        "name": "IO缁惧灝婀€閸愭瑥鍙?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "server": "c43e0d2c7e297fce",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 430,
+        "y": 60,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2452439da843b9a4",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "閸忋劑鍣洪崚鍡楀絺閸?",
+        "func": "const uid = env.get(\"UNIT_ID\") || 1;\nconst req = (fc, adr, qty) => ({ payload: { fc, address: adr, quantity: qty, unitid: uid } });\nreturn [\n    req(2, 0, 8),  // 缁旑垰褰?1 -> DI\n    req(3, 0, 3),  // 缁旑垰褰?2 -> 缁変即鍣竆n    req(3, 22, 10), // 缁旑垰褰?3 -> RFID\n    req(1, 0, 8)    // 缁旑垰褰?4 -> DO閻樿埖鈧礁娲栫拠?(閺傛澘顤?\n];",
+        "outputs": 4,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "v45_get_di"
+            ],
+            [
+                "v45_get_weight"
+            ],
+            [
+                "v45_get_rfid"
+            ],
+            [
+                "2126a6be0ee5754c"
+            ]
+        ]
+    },
+    {
+        "id": "2126a6be0ee5754c",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_5_final",
+        "name": "IO濡€虫健鐠囪褰?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "c43e0d2c7e297fce",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "4e3d7fa1becbb4f2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f22637065db44ac5",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "DI鏉炵悡opic",
+        "func": "const d = msg.responseBuffer.data || [];\nconst o = [];\n\n// 濮ｅ繋绔存潪顕€鍏橀崥灞绢劄瑜版挸澧?0/1 閻樿埖鈧箺no.push({ topic: \"sensor\", payload: !!d[0] });\no.push({ topic: \"feed\", payload: !!d[1] });\no.push({ topic: \"add\", payload: !!d[2] });\no.push({ topic: \"clear\", payload: !!d[3] });\no.push({ topic: \"reset\", payload: !!d[4] });\no.push({ topic: \"zero\", payload: !!d[5] });\n\nreturn [o];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 160,
+        "wires": [
+            [
+                "2bf62d72ee3cb827",
+                "3061cec18cc95af4",
+                "3d6bea8e28bfeb98"
+            ]
+        ]
+    },
+    {
+        "id": "5f9e6f3403b05098",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "缁変即鍣哥憴锝嗙€?",
+        "func": "let r=msg.payload[0]; let w;\nif(r>=32768) w=(r-65536)/10.0; else w=r/10.0;\nconst val = parseFloat(w.toFixed(2));\nreturn [{topic:\"weight\",payload:val}, {payload:val}];",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 220,
+        "wires": [
+            [
+                "5a742488a0e735b1",
+                "3061cec18cc95af4"
+            ],
+            [
+                "v45_led_ascii"
+            ]
+        ]
+    },
+    {
+        "id": "6fcd174e518f2d30",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "RFID闁插秶绮?",
+        "func": "if(!msg.responseBuffer||!msg.responseBuffer.buffer)return null;\nconst b=msg.responseBuffer.buffer; const hT=b[0]; const fT=b[10]; let id=\"\";\nif(hT<0xFF){const c=((b[2]&0x0F)<<8)|b[3]; const t=parseInt([b[4],b[5],b[6],b[7],b[8]].map(x=>x.toString(16).padStart(2,'0')).join(''),16); id=c.toString().padStart(3,'0')+t.toString().padStart(12,'0');}\nelse if(fT<0xFF){const c=((b[12]&0x0F)<<8)|b[13]; const t=parseInt([b[14],b[15],b[16],b[17],b[18]].map(x=>x.toString(16).padStart(2,'0')).join(''),16); id=c.toString().padStart(3,'0')+t.toString().padStart(12,'0');}\nreturn id?{topic:\"rfid\",payload:id}:null;",
+        "outputs": 1,
+        "x": 940,
+        "y": 260,
+        "wires": [
+            [
+                "2bf62d72ee3cb827",
+                "3061cec18cc95af4"
+            ]
+        ]
+    },
+    {
+        "id": "4e3d7fa1becbb4f2",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "DO閸ョ偠顕扮憴锝嗙€?",
+        "func": "return { topic: \"do_status\", payload: msg.responseBuffer.data };",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 300,
+        "wires": [
+            [
+                "2bf62d72ee3cb827"
+            ]
+        ]
+    },
+    {
+        "id": "2bf62d72ee3cb827",
+        "type": "rbe",
+        "z": "acq_v4_5_final",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1210,
+        "y": 180,
+        "wires": [
+            [
+                "59c8c021dc180f7f"
+            ]
+        ]
+    },
+    {
+        "id": "5a742488a0e735b1",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "濠娿倖灏?",
+        "func": "/**\n * 妤傛ɑ鈧嗗厴瀹搞儰绗熺粔浼村櫢濠娿倖灏濋崳?(V2.0 - 闂嗚泛娆㈡潻鐔奉杻瀵櫣澧?\n * 鐟欙絽鍠呴敍姝乷dbus 鏉烆喛顕楃敮锔芥降閻ㄥ嫭鏆熼幑顔界哺閸氬酣妫舵０姒巒 */\n\nconst weight_in = msg.payload;\nconst BUFFER_SIZE = 5;\nconst ALPHA = 0.4;          // 濠婄偛鎮楃化缁樻殶閿?.4 閸忓ジ銆愰獮铏拨娑撳酣鈧喎瀹砛nconst SNAP_THRESHOLD = 3.0; // 鐠哄啿褰夐梼鍫濃偓?kg)閵嗗倽绉存潻鍥劃閸婅壈顫嬫稉铏规埂鐎圭偛濮╂担婊愮礉缁斿宓嗛崫宥呯安\n\nlet buffer = context.get('b') || [];\nlet lastOut = context.get('l') || weight_in;\n\n// 1. 閵嗘劖鐗宠箛鍐╂簚閸掕翰鈧埊绱板Λ鈧ù瀣亣閼煎啫娲跨捄鍐插綁閿涘牏澧伴崣顏囩箻閸︾儤鍨ㄧ粋璇叉簚閿涘　n// 婵″倹鐏夐惉顒勬？鐠哄啿褰夌搾鍛扮箖 3kg閿涘苯鍨界€规矮璐熼惇鐔风杽閸斻劋缍旈敍灞肩瑝鏉╂稖顢戝銈嗗皾閿涘瞼娲块幒銉ㄧ翻閸戠nif (Math.abs(weight_in - lastOut) > SNAP_THRESHOLD) {\n    buffer = new Array(BUFFER_SIZE).fill(weight_in); // 闁插秶鐤嗙紓鎾冲暱閸栫n    context.set('b', buffer);\n    context.set('l', weight_in);\n    msg.payload = weight_in;\n    msg.filter_status = \"FAST_TRACK\"; // 閺嶅洩顔囨稉鍝勬彥鏉╂稒膩瀵猾n    return msg;\n}\n\n// 2. 鐢瓕顫夊銈嗗皾闁槒绶玕nbuffer.push(weight_in);\nif (buffer.length > BUFFER_SIZE) buffer.shift();\ncontext.set('b', buffer);\n\n// 娑擃厺缍呴崐鐓庨挬閸у槹nlet sorted = [...buffer].sort((a, b) => a - b);\nlet median = (sorted.length >= 3) ? (sorted[1] + sorted[2] + sorted[3])/3 : weight_in;\n\n// 娑撯偓闂冭埖绮搁崥宥緉let filtered = (ALPHA * median) + ((1 - ALPHA) * lastOut);\ncontext.set('l', filtered);\n\nmsg.payload = parseFloat(filtered.toFixed(2));\nmsg.filter_status = \"SMOOTHING\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 220,
+        "wires": [
+            [
+                "2bf62d72ee3cb827"
+            ]
+        ]
+    },
+    {
+        "id": "3061cec18cc95af4",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "鐠佹儳顦悩鑸碘偓浣藉殰鐠囧﹥鏌囬柅鏄忕帆",
+        "func": "/**\n * V5.1 鐠佹儳顦柅姘愁唵閻妫悪姊妌 * 娴ｆ粎鏁ら敍姘灲閺?Modbus 缁旀瑥褰?5-9 閻ㄥ嫬婀痪璺ㄥЦ閹箺n */\n\nconst now = Date.now();\nconst TIMEOUT = 2000; // 2缁夋帟绉撮弮璺哄灲鐎规瓡nconst states = context.get('states') || { mod: 0, scale: 0, rfid: 0 };\nconst timers = context.get('timers') || { mod: 0, scale: 0, rfid: 0 };\n\n// 1. 婢跺嫮鎮婇弫鐗堝祦娑撳﹥濮ら敍鍫濆煕閺傜増妞傞梻瀛樺煈閿涘　nif (msg.topic === \"sensor\" || msg.topic === \"do_status\") {\n    timers.mod = now;\n    states.mod = 1;\n} else if (msg.topic === \"weight\") {\n    timers.scale = now;\n    states.scale = 1;\n} else if (msg.topic === \"rfid\") {\n    timers.rfid = now;\n    states.rfid = 1;\n}\n\n// 2. 閸涖劍婀￠幀褎顥呴弻銉礄閻?200ms 鐟欙箑褰傞崳銊┾攳閸旑煉绱歕nif (!msg.topic) {\n    if (now - timers.mod > TIMEOUT) states.mod = 0;\n    if (now - timers.scale > TIMEOUT) states.scale = 0;\n    if (now - timers.rfid > TIMEOUT) states.rfid = 0;\n}\n\n// // 3. 閸愭瑥鍙嗛崗銊ョ湰閸欐﹢鍣洪敍灞筋嚠閹?UI 缂佽儻澹?缁俱垼澹婇弰鍓с仛\n// flow.set(\"Dev_Mod_OK\", states.mod);   // 閻愰€涚秴 9: 濡€虫健\n// flow.set(\"Dev_Scale_OK\", states.scale); // 閻愰€涚秴 7: 缁変即鍣竆n// flow.set(\"Dev_RFID_OK\", states.rfid);   // 閻愰€涚秴 8: RFID\n\ncontext.set('timers', timers);\ncontext.set('states', states);\n\n// 閻樿埖鈧礁褰夐崠鏍ㄦ閹靛秷绶崙鐚寸礉閻劋绨拫鍐槸\nif (msg.topic) return null;\nmsg.payload = states;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 120,
+        "wires": [
+            [
+                "cf9358f0f164f766"
+            ]
+        ]
+    },
+    {
+        "id": "cf9358f0f164f766",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1460,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59c8c021dc180f7f",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3d6bea8e28bfeb98",
+        "type": "function",
+        "z": "acq_v4_5_final",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c43e0d2c7e297fce",
+        "type": "modbus-client",
+        "z": "acq_v4_5_final",
+        "name": "io濡€虫健",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${IO_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "7cedcca290adff11",
+        "type": "modbus-client",
+        "z": "acq_v4_5_final",
+        "name": "缁変即鍣?",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${CZ_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "c757b35fdd0236f4",
+        "type": "modbus-client",
+        "z": "acq_v4_5_final",
+        "name": "rfid",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${RFID_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "abc5843d83e186e5",
+        "type": "modbus-client",
+        "z": "acq_v4_5_final",
+        "name": "led",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${LED_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "1c733b6d9291fd92",
+        "type": "subflow",
+        "name": "閺呴缚鍏橀柌鍥棨缁崵绮篲V4.2_IIoT",
+        "info": "V4.2 閸╁搫鍣悧鍫熸拱閿涙艾瀵橀崥?MQTT 娴滄垹顏€佃甯撮妴涓糛Lite 閺堫剙婀寸€涙ê鍋嶉弽鐓庣础閸栨牓鈧椒绗侀弽鎼佲偓鏄忕帆闂呮梻顬囬妴?",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "334afb81b18c594e"
+                    },
+                    {
+                        "id": "10a70265a5bf98fd"
+                    },
+                    {
+                        "id": "924e6155d9671429"
+                    },
+                    {
+                        "id": "7b3b0f24d26a4d5e"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1480,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "aa55c97c02bac7ca",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1490,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "b211b90d639d4a49",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1520,
+                "y": 240,
+                "wires": [
+                    {
+                        "id": "8009519336c0ec69",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1490,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "6d84fb5a05e74828",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 680,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "085555f5a408dfb8",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1490,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "670048a94b2f40b4",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "FARM_NUM",
+                "type": "str",
+                "value": "#f002"
+            },
+            {
+                "name": "STATION_NUM",
+                "type": "str",
+                "value": "#L01"
+            },
+            {
+                "name": "CAMERA_ID",
+                "type": "str",
+                "value": "CAM_01"
+            },
+            {
+                "name": "T_ADD",
+                "type": "num",
+                "value": "7000"
+            },
+            {
+                "name": "T_FEED",
+                "type": "num",
+                "value": "3000"
+            },
+            {
+                "name": "T_RESET",
+                "type": "num",
+                "value": "3000"
+            }
+        ],
+        "meta": {},
+        "color": "#3FADB5",
+        "outputLabels": [
+            "閺佺増宓佹稉濠冨Г閺堝秴濮熼崳?",
+            "缂佈呮暩閸ｃ劎濮搁幀?",
+            "閻樿埖鈧椒绗傞幎銉︽箛閸斺€虫珤",
+            "閺佺増宓侀幓鎺戝弳sql",
+            "鐟欏棝顣堕崠褰掑帳缂佹挻鐏?"
+        ],
+        "icon": "node-red-dashboard/ui_gauge.png"
+    },
+    {
+        "id": "334afb81b18c594e",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "1.鐟欏棜顫庡В鏂款嚠閺?",
+        "func": "const targetCam = env.get(\"CAMERA_ID\");\nconst dbArray = global.get(\"Result_DB\");\nif (msg.camera_id === targetCam && msg.result !== undefined) {\n    if (!Array.isArray(dbArray)) return null;\n    const cattleNums = dbArray.map(item => String(item.cattle_num));\n    const hasMatch = cattleNums.includes(String(msg.result));\n    if (hasMatch && msg.t1) {\n        const newUrl = msg.t1.replace(/^(https?:\\/\\/)([^:\\/\\s]+)(:\\d+)?(.*)$/, 'https://yifancattle.top/xinfu$4');\n        node.status({fill:\"green\", shape:\"dot\", text: `鐠囧棗鍩嗛幋鎰: ${msg.result}`});\n        return { topic: \"vision_update\", payload: { vid: msg.result, url: newUrl } };\n    }\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "924e6155d9671429",
+                "085555f5a408dfb8"
+            ]
+        ]
+    },
+    {
+        "id": "10a70265a5bf98fd",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "2.濡€崇础閸掑洦宕查弽?",
+        "func": "\n\n// const config = { \n//     tAdd: env.get(\"T_ADD\"), \n//     tFeed: env.get(\"T_FEED\"), \n//     tReset: env.get(\"T_RESET\") \n// };\n\n// let state = context.get('state') || 'FEEDING';\n// let lastInputs = context.get('lastInputs') || { feed: false, add: false, clear: false, reset: false };\n// let timer = context.get('timer') || null;\n\n// // 閵嗘劖鐗宠箛鍐ф叏婢跺秲鈧埊绱伴崣顏呮箒瑜?payload 閺勫海鈥樻稉?true 娑?topic 閸栧綊鍘ら弮璁圭礉閹靛秷顓搁崗銉ㄧ翻閸忋儲妲х亸鍒搉// const validTopics = [\"feed\", \"add\", \"clear\", \"reset\"];\n// const input = {};\n// if (validTopics.includes(msg.topic) && (msg.payload === true || msg.payload === 1 || String(msg.payload) === \"true\")) {\n//     input[msg.topic] = true;\n// }\n\n// function isRising(key) { \n//     return input[key] === true && lastInputs[key] === false; \n// }\n\n// function stopTimer() { \n//     if (timer) { clearTimeout(timer); timer = null; } \n// }\n\n// function getRelayJson(s) {\n//     return {\n//         \"闁插洭顥LY\": (s === 'DELAY_FEED'),\n//         \"閸旂姵鏋LY\": (s === 'DELAY_ADD'),\n//         \"濞撳懏鏋LY\": (s === 'CLEARING'),\n//         \"婢跺秳缍匯LY\": (s === 'DELAY_RESET')\n//     };\n// }\n\n// let changed = false;\n// switch (state) {\n//     case 'FEEDING':\n//         if (isRising('add')) { \n//             state = 'DELAY_ADD'; stopTimer(); changed = true;\n//             timer = setTimeout(() => {\n//                 context.set('state', 'ADDING');\n//                 node.send([ {topic: \"mode_change\", payload: \"ADDING\", relays: getRelayJson(\"ADDING\")}, null ]);\n//             }, config.tAdd);\n//         }\n//         break;\n//     case 'DELAY_ADD':\n//         if (isRising('clear')) { stopTimer(); state = 'CLEARING'; changed = true; }\n//         break;\n//     case 'ADDING':\n//         if (isRising('feed')) { \n//             state = 'DELAY_FEED'; stopTimer(); changed = true;\n//             timer = setTimeout(() => {\n//                 context.set('state', 'FEEDING');\n//                 node.send([ {topic: \"mode_change\", payload: \"FEEDING\", relays: getRelayJson(\"FEEDING\")}, null ]);\n//             }, config.tFeed);\n//         }\n//         break;\n//     case 'CLEARING':\n//         if (isRising('reset')) { \n//             state = 'DELAY_RESET'; stopTimer(); changed = true;\n//             timer = setTimeout(() => {\n//                 context.set('state', 'ADDING');\n//                 node.send([ {topic: \"mode_change\", payload: \"ADDING\", relays: getRelayJson(\"ADDING\")}, null ]);\n//             }, config.tReset);\n//         }\n//         break;\n// }\n\n// // 鐠佹澘缍嶉張顒侇偧鏉堟挸鍙嗛悩鑸碘偓渚婄礉娴犲懘妾洪張澶嬫櫏閹貉冨煑閹稿洣鎶n// if (validTopics.includes(msg.topic)) {\n//     context.set('lastInputs', Object.assign({feed:false, add:false, clear:false, reset:false}, input));\n// }\n// context.set('state', state);\n// context.set('timer', timer);\n\n// if (changed) { \n//     const relayJson = getRelayJson(state); \n//     return [ {topic: \"mode_change\", payload: state, relays: relayJson}, {payload: relayJson} ]; \n// }\n// return null;\n\n\n/**\n * 濡€崇础閸掑洦宕查弽?(v4.3.0 LED閹稿洨銇氶悘顖滃)\n * 閸╄桨绨?v4.2.5 娣団€冲娇閺嶏繝鐛欓悧鍦絥 * 閺傛澘顤冮敍娆秂eding_led / Adding_led / Clearing_led 娑撳鐭?LED DO 閹貉冨煑\n *       娴犲懎婀粙鍐茬暰閹緤绱欓張鈧紒鍫濆灲鐎规熬绱氶悙閫涘瘨閿涘苯娆㈤弮鎯扮箖濞撯剝鈧椒绗夋禍鐢沶 * 娣囶喖顦查敍姝磂tTimeout 閸ョ偠鐨熼崥灞绢劄閹恒劑鈧?Pin2 缂佈呮暩閸?LED 閻樿埖鈧箺n */\n\nconst config = {\n    tAdd: env.get(\"T_ADD\"),\n    tFeed: env.get(\"T_FEED\"),\n    tReset: env.get(\"T_RESET\")\n};\n\nlet state = context.get('state') || 'FEEDING';\nlet lastInputs = context.get('lastInputs') || { feed: false, add: false, clear: false, reset: false };\nlet timer = context.get('timer') || null;\n\n// 閵嗘劖鐗宠箛鍐ф叏婢跺秲鈧埊绱伴崣顏呮箒瑜?payload 閺勫海鈥樻稉?true 娑?topic 閸栧綊鍘ら弮璁圭礉閹靛秷顓搁崗銉ㄧ翻閸忋儲妲х亸鍒搉const validTopics = [\"feed\", \"add\", \"clear\", \"reset\"];\nconst input = {};\nif (validTopics.includes(msg.topic) && (msg.payload === true || msg.payload === 1 || String(msg.payload) === \"true\")) {\n    input[msg.topic] = true;\n}\n\nfunction isRising(key) {\n    return input[key] === true && lastInputs[key] === false;\n}\n\nfunction stopTimer() {\n    if (timer) { clearTimeout(timer); timer = null; }\n}\n\nfunction getRelayJson(s) {\n    return {\n        \"闁插洭顥LY\": (s === 'DELAY_FEED'),\n        \"閸旂姵鏋LY\": (s === 'DELAY_ADD'),\n        \"濞撳懏鏋LY\": (s === 'CLEARING'),\n        \"婢跺秳缍匯LY\": (s === 'DELAY_RESET'),\n        \"Feeding_led\": (s === 'FEEDING'),\n        \"Adding_led\": (s === 'ADDING'),\n        \"Clearing_led\": (s === 'CLEARING')\n    };\n}\n\nlet changed = false;\nswitch (state) {\n    case 'FEEDING':\n        if (isRising('add')) {\n            state = 'DELAY_ADD'; stopTimer(); changed = true;\n            timer = setTimeout(() => {\n                context.set('state', 'ADDING');\n                const r = getRelayJson('ADDING');\n                node.send([{ topic: \"mode_change\", payload: \"ADDING\", relays: r }, { payload: r }]);\n            }, config.tAdd);\n        }\n        break;\n    case 'DELAY_ADD':\n        if (isRising('clear')) { stopTimer(); state = 'CLEARING'; changed = true; }\n        break;\n    case 'ADDING':\n        if (isRising('feed')) {\n            state = 'DELAY_FEED'; stopTimer(); changed = true;\n            timer = setTimeout(() => {\n                context.set('state', 'FEEDING');\n                const r = getRelayJson('FEEDING');\n                node.send([{ topic: \"mode_change\", payload: \"FEEDING\", relays: r }, { payload: r }]);\n            }, config.tFeed);\n        }\n        break;\n    case 'CLEARING':\n        if (isRising('reset')) {\n            state = 'DELAY_RESET'; stopTimer(); changed = true;\n            timer = setTimeout(() => {\n                context.set('state', 'ADDING');\n                const r = getRelayJson('ADDING');\n                node.send([{ topic: \"mode_change\", payload: \"ADDING\", relays: r }, { payload: r }]);\n            }, config.tReset);\n        }\n        break;\n}\n\n// 鐠佹澘缍嶉張顒侇偧鏉堟挸鍙嗛悩鑸碘偓渚婄礉娴犲懘妾洪張澶嬫櫏閹貉冨煑閹稿洣鎶nif (validTopics.includes(msg.topic)) {\n    context.set('lastInputs', Object.assign({ feed: false, add: false, clear: false, reset: false }, input));\n}\ncontext.set('state', state);\ncontext.set('timer', timer);\n\nif (changed) {\n    const relayJson = getRelayJson(state);\n    return [{ topic: \"mode_change\", payload: state, relays: relayJson }, { payload: relayJson }];\n}\nreturn null;",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 160,
+        "wires": [
+            [
+                "924e6155d9671429",
+                "7b3b0f24d26a4d5e"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7b3b0f24d26a4d5e",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "濞撳懘娴傞懘澶婂暱閸氬牊鍨?",
+        "func": "/**\n * 濞撳懘娴傞懘澶婂暱閸氬牊鍨歕n * 1. 缂佸瓨濮㈠Ο鈥崇础閸掑洦宕查弽姝岀翻閸戣櫣娈?baseRelays閵嗕繐n * 2. 娴犲懎鎼锋惔鏂块挬閸欓绗呴崣鎴犳畱 zero 閹稿洣鎶ら敍灞藉綌閸旂姵绔婚梿鍓佹埛閻㈤潧娅掗懘澶婂暱 1 缁夋帇鈧繐n * 3. 濞撳懘娴傞懘澶婂暱缂佹挻娼崥搴划婢?baseRelays閿涘苯鍙炬担娆戞埛閻㈤潧娅掗崪?LED 娑撳秴褰堣ぐ鍗炴惙閵嗕繐n */\nconst ZERO_MS = 1000;\nconst RELAY_KEYS = [\n    \"闁插洭顥LY\",\n    \"閸旂姵鏋LY\",\n    \"濞撳懏鏋LY\",\n    \"婢跺秳缍匯LY\",\n    \"濞撳懘娴俁LY\",\n    \"Feeding_led\",\n    \"Adding_led\",\n    \"Clearing_led\"\n];\n\nconst truthy = (v) => v === true || v === 1 || String(v) === 'true';\nconst normalize = (src) => {\n    const out = {};\n    for (const key of RELAY_KEYS) out[key] = !!(src && src[key]);\n    return out;\n};\nconst stationNum = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || context.get('station_num')\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\ncontext.set('station_num', stationNum);\n\nconst emit = () => {\n    const baseRelays = normalize(context.get('baseRelays') || {\n        \"闁插洭顥LY\": false,\n        \"閸旂姵鏋LY\": false,\n        \"濞撳懏鏋LY\": false,\n        \"婢跺秳缍匯LY\": false,\n        \"濞撳懘娴俁LY\": false,\n        \"Feeding_led\": true,\n        \"Adding_led\": false,\n        \"Clearing_led\": false\n    });\n    baseRelays[\"濞撳懘娴俁LY\"] = !!context.get('zeroPulseActive');\n    return {\n        topic: \"relay_state\",\n        station_num: context.get('station_num') || stationNum,\n        relays: baseRelays,\n        payload: baseRelays\n    };\n};\n\nif (msg.relays && typeof msg.relays === 'object') {\n    const baseRelays = normalize(msg.relays);\n    baseRelays[\"濞撳懘娴俁LY\"] = false;\n    context.set('baseRelays', baseRelays);\n    return emit();\n}\n\nif (msg.topic === 'zero' && msg.command_source === 'platform' && truthy(msg.payload)) {\n    const activeTimer = context.get('zeroPulseTimer');\n    if (activeTimer) clearTimeout(activeTimer);\n\n    context.set('zeroPulseActive', true);\n    const outMsg = emit();\n\n    const timer = setTimeout(() => {\n        context.set('zeroPulseActive', false);\n        context.set('zeroPulseTimer', null);\n        node.send(emit());\n    }, ZERO_MS);\n\n    context.set('zeroPulseTimer', timer);\n    return outMsg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 200,
+        "wires": [
+            [
+                "b211b90d639d4a49"
+            ]
+        ]
+    },
+    {
+        "id": "924e6155d9671429",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "3.闁插洭顥ら柅鏄忕帆閺?",
+        "func": "/**\n * 闁插洭顥ら柅鏄忕帆閺?(v4.5.0 鐡掑懏妞傛稉銏犵磾閻?\n * 1. 濡€崇础缂佹挾鐣婚柅鏄忕帆闁夸礁鐣鹃崷?mode_change 娴滃娆㈤敍宀勪缉閸忓秹鍣搁柌蹇撴珨婢规媽顕ょ憴锕€褰傞妴淇搉 * 2. 閹镐椒绠欓崠?stableMode/stableTs閿涘奔绻氱拠浣规付缂佸牏菙閹礁褰查幁銏狀槻閵嗕繐n * 3. 閹镐椒绠欓崠鏍櫚妞嬬喕绻嶇悰灞锯偓浣告彥閻?feed_runtime_v1閿涘本鏌囬悽闈涙倵閸欘垳鎴风紒顓犵波缁犳ぜ鈧繐n * 4. 閺傛澘顤冮敍姘崲娴ｆ洘膩瀵繋绗呴敍瀹籩ssion 閺冨爼鏆辩搾鍛扮箖 MAX_SESSION_MS 閸掋倕鐣炬稉娲毐閺冨爼妫块崑婊呮暏閿涘n *    娑撱垹绱旂拠銉︽蒋鐠佹澘缍嶉敍宀勫櫢缂?session閿涘奔绗夐幒銊┾偓浣碘偓淇搉 */\n\n// const RUNTIME_KEY = 'feed_runtime_v1';\n// const SAVE_INTERVAL_MS = 5000;\n// const MAX_SESSION_MS = 30 * 60 * 1000; // 30閸掑棝鎸撻敍宀冪Т鏉╁洩顫嬫稉楦款啎婢跺洭鏆遍弮鍫曟？閸嬫粎鏁n// const now = Date.now();\n// const topic = msg.topic || '';\n\n// // === 1. 娑撳﹣绗呴弬鍥︾瑢閸欐﹢鍣洪崚婵嗩潗閸栨牭绱欓崘鍛摠閹緤绱?===\n// let regWeight = context.get('regWeight') ?? 0.0;\n// let regSensor = context.get('regSensor') ?? false;\n// let cow_eid = context.get('cow_eid') ?? '';\n// let cow_vid = context.get('cow_vid') ?? '';\n// let pic_url = context.get('pic_url') ?? '';\n\n// let regMode = context.get('regMode') ?? 'FEEDING';\n// let stableMode = context.get('stableMode') ?? context.get('stableMode', 'file') ?? 'FEEDING';\n// let stableTs = context.get('stableTs') ?? context.get('stableTs', 'file') ?? 0;\n\n// let state = context.get('state') ?? 'IDLE';\n// let startWeight = context.get('startWeight') ?? 0.0;\n// let startTime = context.get('startTime') ?? now;\n// let lastPersistTs = context.get('lastPersistTs') ?? 0;\n\n// let outputRecord = null;\n// let isRelevantUpdate = false;\n// let forcePersist = false;\n\n// // === 2. 閸愬嘲鎯庨崝銊ょ濞嗏剝鈧勪划婢跺稄绱欓弬鍥︽閹緤绱?===\n// if (context.get('bootLoaded') !== true) {\n//     const saved = context.get(RUNTIME_KEY, 'file');\n//     if (saved && typeof saved === 'object') {\n//         regWeight = Number(saved.regWeight ?? regWeight);\n//         regSensor = !!saved.regSensor;\n//         cow_eid = String(saved.cow_eid ?? cow_eid);\n//         cow_vid = String(saved.cow_vid ?? cow_vid);\n//         pic_url = String(saved.pic_url ?? pic_url);\n//         regMode = String(saved.regMode ?? regMode);\n//         stableMode = String(saved.stableMode ?? stableMode);\n//         stableTs = Number(saved.stableTs ?? stableTs);\n//         state = String(saved.state ?? state);\n//         startWeight = Number(saved.startWeight ?? startWeight);\n//         startTime = Number(saved.startTime ?? startTime);\n\n//         // 鐡掑懏妞傞崚銈呯暰閿涙碍浠径宥囨畱 session 瀹歌尪绉存潻鍥ㄦ付婢堆冨帒鐠佸憡妞傞梹鍖＄礉閻╁瓨甯存稉銏犵磾\n//         if ((now - startTime) > MAX_SESSION_MS) {\n//             node.warn(`閸愬嘲鎯庨崝銊︿划婢跺稄绱皊ession 瀹歌尪绉撮弮?${((now - startTime)/1000/60).toFixed(1)} 閸掑棝鎸撻敍灞兼丢瀵啯妫?session`);\n//             state = 'IDLE';\n//             cow_eid = '';\n//             cow_vid = '';\n//             pic_url = '';\n//             startWeight = regWeight;\n//             startTime = now;\n//         }\n//     }\n//     context.set('bootLoaded', true);\n// }\n\n// function persistRuntime(force) {\n//     const ts = Date.now();\n//     if (!force && (ts - lastPersistTs < SAVE_INTERVAL_MS)) return;\n\n//     const runtime = {\n//         regWeight,\n//         regSensor,\n//         cow_eid,\n//         cow_vid,\n//         pic_url,\n//         regMode,\n//         stableMode,\n//         stableTs,\n//         state,\n//         startWeight,\n//         startTime,\n//         savedAt: ts\n//     };\n\n//     context.set(RUNTIME_KEY, runtime, 'file');\n//     context.set('lastPersistTs', ts);\n//     lastPersistTs = ts;\n// }\n\n// // 鐡掑懏妞傞崚銈呯暰鏉堝懎濮崙鑺ユ殶閿涙ession 閺冨爼鏆遍弰顖氭儊鐡掑懓绻冩稉濠囨\n// function isSessionExpired(durMs) {\n//     return durMs > MAX_SESSION_MS;\n// }\n\n// // === 3. 娴滃娆㈡す鍗炲З婢跺嫮鎮婇柅鏄忕帆 ===\n// if (topic === 'weight') {\n//     const w = parseFloat(msg.payload);\n//     regWeight = Number.isFinite(w) ? w : regWeight;\n//     if (stableMode === 'FEEDING') isRelevantUpdate = true;\n// }\n// else if (topic === 'sensor') {\n//     regSensor = (msg.payload === true || msg.payload === 1 || String(msg.payload) === 'true');\n//     isRelevantUpdate = true;\n// }\n// else if (topic === 'rfid') {\n//     if (state === 'FEEDING') {\n//         cow_eid = String(msg.payload);\n//         isRelevantUpdate = true;\n//     }\n// }\n// else if (topic === 'vision_update') {\n//     if (state === 'FEEDING') {\n//         cow_vid = msg.payload?.vid ?? cow_vid;\n//         pic_url = msg.payload?.url ?? pic_url;\n//         isRelevantUpdate = true;\n//     }\n// }\n// else if (topic === 'mode_change') {\n//     const newMode = String(msg.payload);\n//     regMode = newMode;\n\n//     const isNewStable = (newMode === 'FEEDING' || newMode === 'ADDING' || newMode === 'CLEARING');\n\n//     if (isNewStable && newMode !== stableMode) {\n//         const elapsed = now - startTime;\n//         const transitionWeight = regWeight;\n//         const dur = parseFloat(((elapsed) / 1000).toFixed(1));\n//         const intake = parseFloat(Math.abs(transitionWeight - startWeight).toFixed(2));\n\n//         // 鐡掑懏妞傞崚銈呯暰閿涙俺绉存潻鍥︾瑐闂勬劕鍨稉銏犵磾閿涘奔绗夐悽鐔稿灇鐠佹澘缍峔n//         if (isSessionExpired(elapsed)) {\n//             node.warn(`mode_change 缂佹挾鐣绘稉銏犵磾閿涙ession ${dur}s 鐡掑懓绻冩稉濠囨閿涘苯鍨界€规矮璐熺拋鎯ь槵闂€鎸庢闂傛潙浠犻悽鈺?;\n//             // outputRecord 娣囨繃瀵?null閿涘奔绗夐幒銊┾偓涔梟//         } else {\n//             // 濮濓絽鐖剁紒鎾剁暬娑撳﹣绔寸粙铏偓涔梟//             if (stableMode === 'FEEDING') {\n//                 if (regSensor === true && state === 'FEEDING') {\n//                     outputRecord = generateRecord('feed', transitionWeight, dur, intake);\n//                 }\n//             } else {\n//                 const finalEndWeight = (stableMode === 'CLEARING') ? 0.0 : transitionWeight;\n//                 const finalIntake = (stableMode === 'CLEARING') ? parseFloat(Math.abs(startWeight).toFixed(2)) : intake;\n//                 outputRecord = generateRecord(stableMode.toLowerCase().replace('ing', ''), finalEndWeight, dur, finalIntake);\n//             }\n//         }\n\n//         // 閸掑洦宕茬悰鏃€甯存稉搴ｅЦ閹礁顦叉担宥忕礄閺冪姾顔戦弰顖氭儊鐡掑懏妞傞柈鍊燁洣閹笛嗩攽閿涘　n//         startWeight = (stableMode === 'CLEARING') ? 0.0 : transitionWeight;\n//         startTime = now;\n//         state = 'IDLE';\n//         cow_eid = '';\n//         cow_vid = '';\n//         pic_url = '';\n\n//         // 閺囧瓨鏌婇張鈧紒鍫⑶旈幀浣歌嫙閹镐椒绠欓崠鏍电礄file閿涘　n//         stableMode = newMode;\n//         stableTs = now;\n//         context.set('stableMode', stableMode);\n//         context.set('stableMode', stableMode, 'file');\n//         context.set('stableTs', stableTs);\n//         context.set('stableTs', stableTs, 'file');\n\n//         isRelevantUpdate = true;\n//         forcePersist = true;\n//     }\n// }\n\n// // === 4. 闁插洭顥ゆ潻鍥┾柤鐎涙劙鈧槒绶敍鍫滅矌 FEEDING 缁嬭櫕鈧緤绱?===\n// if (stableMode === 'FEEDING') {\n//     if (state === 'FEEDING' && !regSensor) {\n//         const elapsed = now - startTime;\n//         const dur = elapsed / 1000;\n//         const intake = parseFloat(Math.abs(startWeight - regWeight).toFixed(2));\n\n//         // 鐡掑懏妞傞崚銈呯暰閿涙俺绉存潻鍥︾瑐闂勬劕鍨稉銏犵磾\n//         if (isSessionExpired(elapsed)) {\n//             node.warn(`闁插洭顥ょ粋璇叉簚娑撱垹绱旈敍姝磂ssion ${dur.toFixed(1)}s 鐡掑懓绻冩稉濠囨閿涘苯鍨界€规矮璐熺拋鎯ь槵闂€鎸庢闂傛潙浠犻悽鈺?;\n//             // outputRecord 娣囨繃瀵?null\n//         } else if (dur > 1.0 && intake >= 0.2) {\n//             outputRecord = generateRecord('feed', regWeight, parseFloat(dur.toFixed(1)), intake);\n//         }\n\n//         state = 'IDLE';\n//         cow_eid = '';\n//         cow_vid = '';\n//         pic_url = '';\n//         forcePersist = true;\n//     }\n\n//     if (state === 'IDLE' && regSensor) {\n//         state = 'FEEDING';\n//         startWeight = regWeight;\n//         startTime = now;\n//         forcePersist = true;\n//     }\n// }\n\n// // === 5. 鏉堝懎濮崙鑺ユ殶閿涙氨鏁撻幋鎰垼閸戝棜顔囪ぐ?===\n// function generateRecord(type, endW, dur, intakeVal) {\n//     return {\n//         farm_num: env.get('FARM_NUM'),\n//         station_num: env.get('STATION_NUM'),\n//         data_type: type,\n//         cattle_vidnum: cow_vid,\n//         cattle_eidnum: cow_eid,\n//         intake_date: new Date().toISOString().split('T')[0],\n//         intake_start_time: new Date(startTime).toTimeString().split(' ')[0],\n//         intake_end_time: new Date(now).toTimeString().split(' ')[0],\n//         intake_duration_in_second: parseFloat(Number(dur).toFixed(1)),\n//         station_start_weight: parseFloat(Number(startWeight).toFixed(2)),\n//         station_end_weight: parseFloat(Number(endW).toFixed(2)),\n//         food_intake: parseFloat(Number(intakeVal).toFixed(2)),\n//         pic_url: pic_url\n//     };\n// }\n\n// // === 6. 閸愬懎鐡ㄩ幀浣稿晸閸?===\n// context.set('regWeight', regWeight);\n// context.set('regSensor', regSensor);\n// context.set('cow_eid', cow_eid);\n// context.set('cow_vid', cow_vid);\n// context.set('pic_url', pic_url);\n// context.set('regMode', regMode);\n// context.set('stableMode', stableMode);\n// context.set('stableTs', stableTs);\n// context.set('state', state);\n// context.set('startWeight', startWeight);\n// context.set('startTime', startTime);\n\n// // 闁插洭顥ゆ潻娑滎攽娑擃厼浠涢懞鍌涚ウ閹镐椒绠欓崠鏍电幢閸欐垹鏁撶紒鎾剁暬/閻樿埖鈧礁鍨忛幑銏℃瀵搫鍩楅幐浣风畽閸栨湺n// const inSession = (stableMode === 'FEEDING' && (state === 'FEEDING' || regSensor === true));\n// persistRuntime(forcePersist || !!outputRecord || inSession);\n\n// node.status({\n//     fill: (regMode.includes('DELAY')) ? 'yellow' : (state === 'FEEDING' ? 'blue' : 'grey'),\n//     shape: 'dot',\n//     text: `濡€崇础:${regMode} | VID:${cow_vid || '--'}`\n// });\n\n// // 鏉堟挸鍤鏇″壖閸掑棝鍘?[1.缂佹挾鐣荤拋鏉跨秿, 2.鐎圭偞妞傞悩鑸碘偓涔歕n// let msgRecord = outputRecord ? { payload: outputRecord } : null;\n// let msgUI = null;\n// if (isRelevantUpdate) {\n//     msgUI = {\n//         payload: {\n//             farm_num: env.get('FARM_NUM'),\n//             station_num: env.get('STATION_NUM'),\n//             state: state,\n//             weight: regWeight,\n//             mode: regMode,\n//             vid: cow_vid,\n//             eid: cow_eid\n//         }\n//     };\n// }\n\n// return [msgRecord, msgUI];\n\n\n\n\n/**\n * 闁插洭顥ら柅鏄忕帆閺?(v4.5.0 鐡掑懏妞傛稉銏犵磾閻?+ 闁插洭顥ゅ▎鈩冩殶鐠佲剝鏆?\n * 1. 濡€崇础缂佹挾鐣婚柅鏄忕帆闁夸礁鐣鹃崷?mode_change 娴滃娆㈤敍宀勪缉閸忓秹鍣搁柌蹇撴珨婢规媽顕ょ憴锕€褰傞妴淇搉 * 2. 閹镐椒绠欓崠?stableMode/stableTs閿涘奔绻氱拠浣规付缂佸牏菙閹礁褰查幁銏狀槻閵嗕繐n * 3. 閹镐椒绠欓崠鏍櫚妞嬬喕绻嶇悰灞锯偓浣告彥閻?feed_runtime_v1閿涘本鏌囬悽闈涙倵閸欘垳鎴风紒顓犵波缁犳ぜ鈧繐n * 4. 閺傛澘顤冮敍姘崲娴ｆ洘膩瀵繋绗呴敍瀹籩ssion 閺冨爼鏆辩搾鍛扮箖 MAX_SESSION_MS 閸掋倕鐣炬稉娲毐閺冨爼妫块崑婊呮暏閿涘n *    娑撱垹绱旂拠銉︽蒋鐠佹澘缍嶉敍宀勫櫢缂?session閿涘奔绗夐幒銊┾偓浣碘偓淇搉 * 5. 閺傛澘顤冮敍姘跺櫚妞嬬喐顐奸弫鎷岊吀閺?feedCount閿涘奔绮庨崷銊ф晸閹存劙鍣版鐔活唶瑜?(data_type='feed') 閺冨墎鐤崝鐘偓淇搉 */\n\nconst RUNTIME_KEY = 'feed_runtime_v1';\nconst SAVE_INTERVAL_MS = 5000;\nconst MAX_SESSION_MS = 30 * 60 * 1000; // 30閸掑棝鎸撻敍宀冪Т鏉╁洩顫嬫稉楦款啎婢跺洭鏆遍弮鍫曟？閸嬫粎鏁nconst now = Date.now();\nconst topic = msg.topic || '';\n\n// === 1. 娑撳﹣绗呴弬鍥︾瑢閸欐﹢鍣洪崚婵嗩潗閸栨牭绱欓崘鍛摠閹緤绱?===\nlet regWeight = context.get('regWeight') ?? 0.0;\nlet regSensor = context.get('regSensor') ?? false;\nlet cow_eid = context.get('cow_eid') ?? '';\nlet cow_vid = context.get('cow_vid') ?? '';\nlet pic_url = context.get('pic_url') ?? '';\n\nlet regMode = context.get('regMode') ?? 'FEEDING';\nlet stableMode = context.get('stableMode') ?? context.get('stableMode', 'file') ?? 'FEEDING';\nlet stableTs = context.get('stableTs') ?? context.get('stableTs', 'file') ?? 0;\n\nlet state = context.get('state') ?? 'IDLE';\nlet startWeight = context.get('startWeight') ?? 0.0;\nlet startTime = context.get('startTime') ?? now;\nlet lastPersistTs = context.get('lastPersistTs') ?? 0;\nlet feedCount = context.get('feedCount') ?? 0;\n\nlet outputRecord = null;\nlet isRelevantUpdate = false;\nlet forcePersist = false;\n\n// === 2. 閸愬嘲鎯庨崝銊ょ濞嗏剝鈧勪划婢跺稄绱欓弬鍥︽閹緤绱?===\nif (context.get('bootLoaded') !== true) {\n    const saved = context.get(RUNTIME_KEY, 'file');\n    if (saved && typeof saved === 'object') {\n        regWeight = Number(saved.regWeight ?? regWeight);\n        regSensor = !!saved.regSensor;\n        cow_eid = String(saved.cow_eid ?? cow_eid);\n        cow_vid = String(saved.cow_vid ?? cow_vid);\n        pic_url = String(saved.pic_url ?? pic_url);\n        regMode = String(saved.regMode ?? regMode);\n        stableMode = String(saved.stableMode ?? stableMode);\n        stableTs = Number(saved.stableTs ?? stableTs);\n        state = String(saved.state ?? state);\n        startWeight = Number(saved.startWeight ?? startWeight);\n        startTime = Number(saved.startTime ?? startTime);\n        feedCount = Number(saved.feedCount ?? feedCount);\n\n        // 鐡掑懏妞傞崚銈呯暰閿涙碍浠径宥囨畱 session 瀹歌尪绉存潻鍥ㄦ付婢堆冨帒鐠佸憡妞傞梹鍖＄礉閻╁瓨甯存稉銏犵磾\n        if ((now - startTime) > MAX_SESSION_MS) {\n            node.warn(`閸愬嘲鎯庨崝銊︿划婢跺稄绱皊ession 瀹歌尪绉撮弮?${((now - startTime) / 1000 / 60).toFixed(1)} 閸掑棝鎸撻敍灞兼丢瀵啯妫?session`);\n            state = 'IDLE';\n            cow_eid = '';\n            cow_vid = '';\n            pic_url = '';\n            startWeight = regWeight;\n            startTime = now;\n        }\n    }\n    context.set('bootLoaded', true);\n}\n\nfunction persistRuntime(force) {\n    const ts = Date.now();\n    if (!force && (ts - lastPersistTs < SAVE_INTERVAL_MS)) return;\n\n    const runtime = {\n        regWeight,\n        regSensor,\n        cow_eid,\n        cow_vid,\n        pic_url,\n        regMode,\n        stableMode,\n        stableTs,\n        state,\n        startWeight,\n        startTime,\n        feedCount,\n        savedAt: ts\n    };\n\n    context.set(RUNTIME_KEY, runtime, 'file');\n    context.set('lastPersistTs', ts);\n    lastPersistTs = ts;\n}\n\n// 鐡掑懏妞傞崚銈呯暰鏉堝懎濮崙鑺ユ殶閿涙ession 閺冨爼鏆遍弰顖氭儊鐡掑懓绻冩稉濠囨\nfunction isSessionExpired(durMs) {\n    return durMs > MAX_SESSION_MS;\n}\n\n// === 3. 娴滃娆㈡す鍗炲З婢跺嫮鎮婇柅鏄忕帆 ===\nif (topic === 'weight') {\n    const w = parseFloat(msg.payload);\n    regWeight = Number.isFinite(w) ? w : regWeight;\n    if (stableMode === 'FEEDING') isRelevantUpdate = true;\n}\nelse if (topic === 'sensor') {\n    regSensor = (msg.payload === true || msg.payload === 1 || String(msg.payload) === 'true');\n    isRelevantUpdate = true;\n}\nelse if (topic === 'rfid') {\n    if (state === 'FEEDING') {\n        cow_eid = String(msg.payload);\n        isRelevantUpdate = true;\n    }\n}\nelse if (topic === 'vision_update') {\n    if (state === 'FEEDING') {\n        cow_vid = msg.payload?.vid ?? cow_vid;\n        pic_url = msg.payload?.url ?? pic_url;\n        isRelevantUpdate = true;\n    }\n}\nelse if (topic === 'mode_change') {\n    const newMode = String(msg.payload);\n    regMode = newMode;\n\n    const isNewStable = (newMode === 'FEEDING' || newMode === 'ADDING' || newMode === 'CLEARING');\n\n    if (isNewStable && newMode !== stableMode) {\n        const elapsed = now - startTime;\n        const transitionWeight = regWeight;\n        const dur = parseFloat(((elapsed) / 1000).toFixed(1));\n        const intake = parseFloat(Math.abs(transitionWeight - startWeight).toFixed(2));\n\n        // 鐡掑懏妞傞崚銈呯暰閿涙俺绉存潻鍥︾瑐闂勬劕鍨稉銏犵磾閿涘奔绗夐悽鐔稿灇鐠佹澘缍峔n        if (isSessionExpired(elapsed)) {\n            node.warn(`mode_change 缂佹挾鐣绘稉銏犵磾閿涙ession ${dur}s 鐡掑懓绻冩稉濠囨閿涘苯鍨界€规矮璐熺拋鎯ь槵闂€鎸庢闂傛潙浠犻悽鈺?;\n            // outputRecord 娣囨繃瀵?null閿涘奔绗夐幒銊┾偓涔梟        } else {\n            // 濮濓絽鐖剁紒鎾剁暬娑撳﹣绔寸粙铏偓涔梟            if (stableMode === 'FEEDING') {\n                if (regSensor === true && state === 'FEEDING') {\n                    outputRecord = generateRecord('feed', transitionWeight, dur, intake);\n                    if (outputRecord) {\n                        feedCount++;\n                    }\n                }\n            } else {\n                const finalEndWeight = (stableMode === 'CLEARING') ? 0.0 : transitionWeight;\n                const finalIntake = (stableMode === 'CLEARING') ? parseFloat(Math.abs(startWeight).toFixed(2)) : intake;\n                outputRecord = generateRecord(stableMode.toLowerCase().replace('ing', ''), finalEndWeight, dur, finalIntake);\n            }\n        }\n\n        // 閸掑洦宕茬悰鏃€甯存稉搴ｅЦ閹礁顦叉担宥忕礄閺冪姾顔戦弰顖氭儊鐡掑懏妞傞柈鍊燁洣閹笛嗩攽閿涘　n        startWeight = (stableMode === 'CLEARING') ? 0.0 : transitionWeight;\n        startTime = now;\n        state = 'IDLE';\n        cow_eid = '';\n        cow_vid = '';\n        pic_url = '';\n\n        // 闁插洭顥ゅΟ鈥崇础娑撳﹤宕屽▽鍖＄窗濞撳懐鈹栭張顒侇偧闁插洭顥ゅ▎鈩冩殶\n        if (newMode === 'FEEDING' && stableMode !== 'FEEDING') {\n            feedCount = 0;\n        }\n\n        // 閺囧瓨鏌婇張鈧紒鍫⑶旈幀浣歌嫙閹镐椒绠欓崠鏍电礄file閿涘　n        stableMode = newMode;\n        stableTs = now;\n        context.set('stableMode', stableMode);\n        context.set('stableMode', stableMode, 'file');\n        context.set('stableTs', stableTs);\n        context.set('stableTs', stableTs, 'file');\n\n        isRelevantUpdate = true;\n        forcePersist = true;\n    }\n}\n\n// === 4. 闁插洭顥ゆ潻鍥┾柤鐎涙劙鈧槒绶敍鍫滅矌 FEEDING 缁嬭櫕鈧緤绱?===\nif (stableMode === 'FEEDING') {\n    if (state === 'FEEDING' && !regSensor) {\n        const elapsed = now - startTime;\n        const dur = elapsed / 1000;\n        const intake = parseFloat(Math.abs(startWeight - regWeight).toFixed(2));\n\n        // 鐡掑懏妞傞崚銈呯暰閿涙俺绉存潻鍥︾瑐闂勬劕鍨稉銏犵磾\n        if (isSessionExpired(elapsed)) {\n            node.warn(`闁插洭顥ょ粋璇叉簚娑撱垹绱旈敍姝磂ssion ${dur.toFixed(1)}s 鐡掑懓绻冩稉濠囨閿涘苯鍨界€规矮璐熺拋鎯ь槵闂€鎸庢闂傛潙浠犻悽鈺?;\n            // outputRecord 娣囨繃瀵?null\n        } else if (dur > 1.0 && intake >= 0.2) {\n            outputRecord = generateRecord('feed', regWeight, parseFloat(dur.toFixed(1)), intake);\n            if (outputRecord) {\n                feedCount++;\n            }\n        }\n\n        state = 'IDLE';\n        cow_eid = '';\n        cow_vid = '';\n        pic_url = '';\n        forcePersist = true;\n    }\n\n    if (state === 'IDLE' && regSensor) {\n        state = 'FEEDING';\n        startWeight = regWeight;\n        startTime = now;\n        forcePersist = true;\n    }\n}\n\n// === 5. 鏉堝懎濮崙鑺ユ殶閿涙氨鏁撻幋鎰垼閸戝棜顔囪ぐ?===\nfunction generateRecord(type, endW, dur, intakeVal) {\n    return {\n        farm_num: env.get('FARM_NUM'),\n        station_num: env.get('STATION_NUM'),\n        data_type: type,\n        cattle_vidnum: cow_vid,\n        cattle_eidnum: cow_eid,\n        intake_date: new Date().toISOString().split('T')[0],\n        intake_start_time: new Date(startTime).toTimeString().split(' ')[0],\n        intake_end_time: new Date(now).toTimeString().split(' ')[0],\n        intake_duration_in_second: parseFloat(Number(dur).toFixed(1)),\n        station_start_weight: parseFloat(Number(startWeight).toFixed(2)),\n        station_end_weight: parseFloat(Number(endW).toFixed(2)),\n        food_intake: parseFloat(Number(intakeVal).toFixed(2)),\n        pic_url: pic_url\n    };\n}\n\n// === 6. 閸愬懎鐡ㄩ幀浣稿晸閸?===\ncontext.set('regWeight', regWeight);\ncontext.set('regSensor', regSensor);\ncontext.set('cow_eid', cow_eid);\ncontext.set('cow_vid', cow_vid);\ncontext.set('pic_url', pic_url);\ncontext.set('regMode', regMode);\ncontext.set('stableMode', stableMode);\ncontext.set('stableTs', stableTs);\ncontext.set('state', state);\ncontext.set('startWeight', startWeight);\ncontext.set('startTime', startTime);\ncontext.set('feedCount', feedCount);\n\n// 闁插洭顥ゆ潻娑滎攽娑擃厼浠涢懞鍌涚ウ閹镐椒绠欓崠鏍电幢閸欐垹鏁撶紒鎾剁暬/閻樿埖鈧礁鍨忛幑銏℃瀵搫鍩楅幐浣风畽閸栨湺nconst inSession = (stableMode === 'FEEDING' && (state === 'FEEDING' || regSensor === true));\npersistRuntime(forcePersist || !!outputRecord || inSession);\n\nnode.status({\n    fill: (regMode.includes('DELAY')) ? 'yellow' : (state === 'FEEDING' ? 'blue' : 'grey'),\n    shape: 'dot',\n    text: `濡€崇础:${regMode} | VID:${cow_vid || '--'}`\n});\n\n// 鏉堟挸鍤鏇″壖閸掑棝鍘?[1.缂佹挾鐣荤拋鏉跨秿, 2.鐎圭偞妞傞悩鑸碘偓涔歕nlet msgRecord = outputRecord ? { payload: outputRecord } : null;\nlet msgUI = null;\nif (isRelevantUpdate) {\n    msgUI = {\n        payload: {\n            farm_num: env.get('FARM_NUM'),\n            station_num: env.get('STATION_NUM'),\n            state: state,\n            weight: regWeight,\n            mode: regMode,\n            vid: cow_vid,\n            eid: cow_eid,\n            feed_count: feedCount\n        }\n    };\n}\n\nreturn [msgRecord, msgUI];",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "0198c1218fd04793"
+            ],
+            [
+                "status_adapter",
+                "98b18098856a096d"
+            ]
+        ]
+    },
+    {
+        "id": "5d5395092f98eaca",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "???????????",
+        "func": "const payload = msg.payload || {};\n\nfunction escapeText(value) {\n    if (value === null || value === undefined) return \"\";\n    return String(value).replace(/'/g, \"''\");\n}\n\nfunction asInteger(value) {\n    const num = Number(value);\n    return Number.isFinite(num) ? Math.trunc(num) : 0;\n}\n\nfunction asReal(value) {\n    const num = Number(value);\n    return Number.isFinite(num) ? num : 0;\n}\n\nconst finalSql = `INSERT INTO t_cattle_feed_intake_data (\n    farm_num, station_num, cattle_vidnum, cattle_eidnum,\n    intake_date, intake_start_time, intake_end_time,\n    intake_duration_in_second, station_start_weight, station_end_weight, food_intake, data_type,\n    pic_url\n) VALUES (\n    '${escapeText(payload.farm_num)}', '${escapeText(payload.station_num)}', '${escapeText(payload.cattle_vidnum)}', '${escapeText(payload.cattle_eidnum)}',\n    '${escapeText(payload.intake_date)}', '${escapeText(payload.intake_start_time)}', '${escapeText(payload.intake_end_time)}',\n    ${asInteger(payload.intake_duration_in_second)}, ${asReal(payload.station_start_weight)}, ${asReal(payload.station_end_weight)}, ${asReal(payload.food_intake)}, '${escapeText(payload.data_type)}',\n    '${escapeText(payload.pic_url)}'\n);`;\n\nreturn { topic: finalSql, payload: msg.payload, station_num: msg.station_num };",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 100,
+        "wires": [
+            [
+                "6d84fb5a05e74828"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_data_out",
+        "type": "mqtt out",
+        "z": "1c733b6d9291fd92",
+        "name": "閺佺増宓佹稉濠冨Г",
+        "topic": "",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ba22fb954fdebbc5",
+        "x": 1000,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "status_adapter",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "閻樿埖鈧焦甯归柅渚€鈧倿鍘ら崳?",
+        "func": "/**\n * 閻樿埖鈧焦甯归柅渚€鈧倿鍘ら崳?(v2.3 閸欐ɑ娲跨憴锕€褰傞悧?\n * 1. 婢х偛濮為悩鑸碘偓渚€鏀ｉ敍姘涧閺堝缍嬮弫鏉跨摟閻樿埖鈧?(0, 1, 2) 閺€鐟板綁閺冭埖澧犻幒銊┾偓浣规殶閹诡喓鈧繐n * 2. 閺嬩浇鍤х划鍓х暆閿涙矮绮庨幒銊┾偓浣圭壋韫囧啰濮搁幀浣鼓佸蹇旀殶閹诡喓鈧繐n */\n\nconst data = msg.payload;\n\n// 1. 鐎瑰鍙忛幀褎鐗庢宀嬬窗绾喕绻氶弫鐗堝祦娴ｆ挸鎮庡▔鏄瀗if (!data || typeof data !== 'object' || !data.mode) {\n    return null;\n}\n\n// 2. 濡€崇础閺勭姴鐨犻柅鏄忕帆 (String -> Int)\nlet currentStatus = 0;\nconst mode = data.mode;\n\nif (mode.includes(\"ADD\") || mode.includes(\"RESET\")) {\n    currentStatus = 1; // 閸旂姵鏋￠幋鏍ь槻娴ｅ秵膩瀵猾n} else if (mode.includes(\"CLEAR\")) {\n    currentStatus = 2; // 濞撳懏鏋″Ο鈥崇础\n} else {\n    currentStatus = 0; // 闁插洭顥ゅΟ鈥崇础 (FEEDING)\n}\n\n// 3. 閺嶇绺鹃敍姘綁閺囧瓨顥呭ù?(Change Filter)\n// 閼惧嘲褰囨稉濠佺濞嗏剝甯归柅浣瑰灇閸旂喓娈戦悩鑸碘偓涔梟let lastStatus = context.get('lastStatus');\n\n// 婵″倹鐏夎ぐ鎾冲閻樿埖鈧椒绗屾稉濠佺濞嗭紕娴夐崥宀嬬礉閸掓瑧娲块幒銉﹀閹搭亷绱濇稉宥堢箻閸忋儱鎮楃紒顓⑩偓鏄忕帆\nif (currentStatus === lastStatus) {\n    return null;\n}\n\n// 4. 閺囧瓨鏌婇柨渚婄窗鐠佹澘缍嶈ぐ鎾冲閻樿埖鈧緤绱濇笟娑楃瑓娑撯偓濞嗏剝鐦€电ncontext.set('lastStatus', currentStatus);\n\n// 5. 閺嬪嫰鈧姷绨跨粻鈧惃鍕腹闁礁瀵榎nnode.status({\n    fill: \"green\",\n    shape: \"dot\",\n    text: `閻樿埖鈧礁褰夐弴? ${currentStatus}`\n});\n\nreturn {\n    topic: `feed/${data.farm_num}_status`,\n    payload: {\n        station_num: data.station_num,\n        status: currentStatus\n    }\n};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 320,
+        "wires": [
+            [
+                "mqtt_status_out"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_status_out",
+        "type": "mqtt out",
+        "z": "1c733b6d9291fd92",
+        "name": "閻樿埖鈧椒绗傞幎?",
+        "topic": "feed/f002/telemetry",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d9a4cd81a1edcdab",
+        "x": 1010,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "98b18098856a096d",
+        "type": "rbe",
+        "z": "1c733b6d9291fd92",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 790,
+        "y": 240,
+        "wires": [
+            [
+                "8009519336c0ec69"
+            ]
+        ]
+    },
+    {
+        "id": "b211b90d639d4a49",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d84fb5a05e74828",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa55c97c02bac7ca",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8009519336c0ec69",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "085555f5a408dfb8",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ba22fb954fdebbc5",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "47.104.13.18",
+        "port": "1883",
+        "tls": "cf8a366fdff359c8",
+        "clientid": "test",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d9a4cd81a1edcdab",
+        "type": "mqtt-broker",
+        "name": "鏉烆垯娆㈤獮鍐插酱",
+        "broker": "tcp://db.easternbell.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "cf8a366fdff359c8",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "emqxsl-ca.crt",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "mqtt_control_in",
+        "type": "mqtt in",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "楠炲啿褰撮幒褍鍩楃拋銏ゆ",
+        "topic": "feed/f002/command",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "2805cf4abe65225e",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 610,
+        "y": 160,
+        "wires": [
+            [
+                "control_adapter",
+                "54c0f58df9a15463"
+            ]
+        ]
+    },
+    {
+        "id": "control_adapter",
+        "type": "function",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "閹稿洣鎶ら崚鍡楀絺闁倿鍘ら崳?",
+        "func": "// 閸嬪洩顔曢悳顖氼暔閸欐﹢鍣洪悽杈╁煑濞翠焦褰佹笟娑欏灗閹靛濮╅幐鍥х暰\nconst targetStation = \"#L01\"; \nif (msg.payload.station_num === targetStation) {\n    const cmdMap = {\n        \"feed_button\": \"feed\",\n        \"add_button\": \"add\",\n        \"clear_button\": \"clear\",\n        \"reset_button\": \"reset\",\n        \"zero_button\": \"zero\"\n    };\n    const targetTopic = cmdMap[msg.payload.command];\n    if (targetTopic) {\n        return { topic: targetTopic, payload: true, command_source: \"platform\" };\n    }\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 160,
+        "wires": [
+            [
+                "32447efece5e33e2"
+            ]
+        ]
+    },
+    {
+        "id": "32447efece5e33e2",
+        "type": "subflow:1c733b6d9291fd92",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "",
+        "env": [
+            {
+                "name": "FARM_NUM",
+                "value": "f002",
+                "type": "str"
+            }
+        ],
+        "x": 1030,
+        "y": 140,
+        "wires": [
+            [
+                "8876b8f744f28dbc",
+                "b0ae4b94e932f63e",
+                "4749ff74f7de9fbb"
+            ],
+            [
+                "8be001a361f1ae95",
+                "0c6801975e1759b8",
+                "eac14f2414bdb4c4",
+                "4749ff74f7de9fbb"
+            ],
+            [
+                "b8b60be1a93a9a01",
+                "ed666b23d8f7bb81",
+                "4749ff74f7de9fbb"
+            ],
+            [
+                "68c7630a3a262ca9",
+                "sql_queue"
+            ],
+            [
+                "2c0160b45889d90c",
+                "4749ff74f7de9fbb"
+            ]
+        ]
+    },
+    {
+        "id": "68c7630a3a262ca9",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "閺佺増宓佹穱婵嗙摠閺堫剙婀磗ql",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b8b60be1a93a9a01",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "濡€崇础閻樿埖鈧椒绗傞幎銉︽箛閸斺€虫珤",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "8be001a361f1ae95",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "缂佈呮暩閸ｃ劏绶崙?",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1330,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8876b8f744f28dbc",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "閺佺増宓佹稉濠冨Г閺堝秴濮熼崳?",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "4d6c4bd667b04b78",
+        "type": "sqlite",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "mydb": "092c751cb058d246",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "閹绘帒鍙嗛弫鐗堝祦",
+        "x": 1480,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "sql_queue",
+        "type": "delay",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "IO 妫版垹宸奸幒褍鍩?(50ms)",
+        "pauseType": "rate",
+        "timeout": "5",
+        "rate": "1",
+        "nbRateUnits": "0.05",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 1290,
+        "y": 220,
+        "wires": [
+            [
+                "4d6c4bd667b04b78"
+            ]
+        ]
+    },
+    {
+        "id": "0c6801975e1759b8",
+        "type": "subflow:acq_v4_5_final",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "",
+        "env": [
+            {
+                "name": "IO_IP",
+                "value": "192.168.50.35",
+                "type": "str"
+            },
+            {
+                "name": "CZ_IP",
+                "value": "192.168.50.35",
+                "type": "str"
+            },
+            {
+                "name": "RFID_IP",
+                "value": "192.168.3.244",
+                "type": "str"
+            },
+            {
+                "name": "STATION_NUM",
+                "value": "#L01",
+                "type": "str"
+            }
+        ],
+        "x": 1640,
+        "y": 100,
+        "wires": [
+            [
+                "32447efece5e33e2",
+                "d70923d22d558e81",
+                "8971453386fb4b52",
+                "4749ff74f7de9fbb"
+            ],
+            [],
+            [
+                "cab856cda666ff60",
+                "d9f560cb57814997",
+                "7b9b20c065f62472"
+            ]
+        ]
+    },
+    {
+        "id": "cab856cda666ff60",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1960,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d70923d22d558e81",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1980,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "531980ab99ccdc75",
+        "type": "function",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "鐟欏棜顫庢潏鎾冲弳瀵板懎鐣崰?",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89c8494c5ac982cb",
+        "type": "function",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "閺佺増宓佺憴锝嗙€介弫鏉戞値",
+        "func": "const modeMap = (m) => {\n    if (!m || typeof m !== 'string') return 0;\n    if (m.includes('ADD') || m.includes('RESET')) return 1;\n    if (m.includes('CLEAR')) return 2;\n    return 0;\n};\n\nlet snap = context.get('snap') || {};\nif (!snap.info) snap.info = { farm_num: env.get('FARM_NUM') || '', station_num: '' };\nif (!snap.basic) snap.basic = { mode: 0, vid: '', eid: '', weight: 0, feed_count: 0 };\nif (!snap.device) snap.device = { cam: 0, scale: 0, rfid: 0, module: 0 };\nif (!snap.io) snap.io = { di: [0, 0, 0, 0, 0, 0], do: [0, 0, 0, 0, 0], led: [0, 0, 0] };\n\n// Join 閼汇儱瀣€闁?useparts閿涘本鏆熺紒鍕躬 msg.parts閿涙稑鎯侀崚娆忔躬 msg.payload\nconst list = Array.isArray(msg.parts) ? msg.parts : (Array.isArray(msg.payload) ? msg.payload : [msg]);\nlet lastMsg = msg;\n\nfor (const m of list) {\n    const msgObj = (m && m.payload !== undefined) ? m : { topic: '', payload: m, station_num: m.station_num };\n    const t = msgObj.topic || '';\n    const p = msgObj.payload;\n    const incomingSt = msgObj.station_num || (p && p.station_num);\n\n    if (incomingSt) snap.info.station_num = String(incomingSt);\n\n    // 1. 闁插洭娉︾仦?Pin1閿涘湞oin 鏉堟挸鍤弫鎵矋閸忓啰绀岄崣顖濆厴閸欘亝婀?payload 閺?topic閿涘矂娓堕幐澶婂敶鐎硅甯归弬顓ㄧ礆\n    if (t === 'weight' || (typeof p === 'number' && t === '')) {\n        snap.basic.weight = typeof p === 'number' ? p : (parseFloat(p) || 0);\n    } else if (t === 'rfid') {\n        snap.basic.eid = String(p ?? '');\n    } else if (t === 'sensor') {\n        snap.io.di[0] = (p === true || p === 1 || String(p) === 'true') ? 1 : 0;\n    } else if (t === 'feed') {\n        snap.io.di[1] = (p === true || p === 1 || String(p) === 'true') ? 1 : 0;\n    } else if (t === 'add') {\n        snap.io.di[2] = (p === true || p === 1 || String(p) === 'true') ? 1 : 0;\n    } else if (t === 'clear') {\n        snap.io.di[3] = (p === true || p === 1 || String(p) === 'true') ? 1 : 0;\n    } else if (t === 'reset') {\n        snap.io.di[4] = (p === true || p === 1 || String(p) === 'true') ? 1 : 0;\n    } else if (t === 'zero') {\n        snap.io.di[5] = (p === true || p === 1 || String(p) === 'true') ? 1 : 0;\n    } else if (t === 'do_status') {\n        const arr = Array.isArray(p) ? p : [];\n        snap.io.do = [arr[0] ? 1 : 0, arr[1] ? 1 : 0, arr[2] ? 1 : 0, arr[3] ? 1 : 0, arr[4] ?? 0];\n        snap.io.led = [arr[5] ? 1 : 0, arr[6] ? 1 : 0, arr[7] ? 1 : 0];\n    }\n\n    // 2. 闁插洭娉︾仦?Pin3\n    if (p && typeof p === 'object' && 'mod' in p && 'scale' in p && 'rfid' in p && !('farm_num' in p)) {\n        snap.device.module = p.mod ? 1 : 0;\n        snap.device.scale = p.scale ? 1 : 0;\n        snap.device.rfid = p.rfid ? 1 : 0;\n    }\n\n    // 3. 闁插洭顥ょ化鑽ょ埠 Pin3閿涘牏濮搁幀浣割嚠鐠炩€虫儓 weight/vid/eid閿涘奔绔撮獮鑸垫纯閺傚府绱歕n    if (p && typeof p === 'object' && 'farm_num' in p) {\n        snap.info.farm_num = String(p.farm_num ?? snap.info.farm_num ?? '');\n        snap.info.station_num = String(msgObj.station_num ?? p.station_num ?? snap.info.station_num ?? '');\n        snap.basic.mode = modeMap(p.mode);\n        snap.basic.feed_count = Number.isFinite(Number(p.feed_count)) ? Number(p.feed_count) : (snap.basic.feed_count ?? 0);\n        if (Number.isFinite(Number(p.weight))) snap.basic.weight = Number(p.weight);\n        if (p.vid != null) snap.basic.vid = String(p.vid ?? '');\n        if (p.eid != null) snap.basic.eid = String(p.eid ?? '');\n    }\n\n    // 4. 闁插洭顥ょ化鑽ょ埠 Pin5\n    if (t === 'vision_update' && p && typeof p === 'object' && 'vid' in p) {\n        snap.basic.vid = String(p.vid ?? '');\n    }\n\n    lastMsg = msgObj;\n}\n\ncontext.set('snap', snap);\n\n// 娣囨繆鐦?basic.feed_count 婵绮撶€涙ê婀敍宀勪缉閸忓秴鍙忛柌蹇斿腹闁焦妞傜€涙顔岀紓鍝勩亼\nif (snap.basic != null && (snap.basic.feed_count === undefined || snap.basic.feed_count === null)) {\n    snap.basic.feed_count = 0;\n}\n\nconst out = {\n    payload: JSON.parse(JSON.stringify(snap)),\n    station_num: snap.info && snap.info.station_num ? snap.info.station_num : (lastMsg && (lastMsg.station_num != null ? lastMsg.station_num : (lastMsg.payload && lastMsg.payload.station_num)))\n};\nif (out.station_num != null) out.station_num = String(out.station_num);\nreturn out;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1920,
+        "y": 380,
+        "wires": [
+            [
+                "533feed1144f34e2",
+                "83972aefb1038366"
+            ]
+        ]
+    },
+    {
+        "id": "83972aefb1038366",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2400,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b4692ff5921814ce",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1740,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "533feed1144f34e2",
+        "type": "function",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "RBE_Uploader閺佺増宓侀崢濠氬櫢",
+        "func": "// /**\n//  * V5.3_IIoT 婢х偤鍣洪弫鐗堝祦閺佹潙鎮庨崙鑺ユ殶 (Delta Dispatcher) - 閻愰€涚秴缁狙冨箵闁插硵n//  * 鏉堟挸鍙嗛敍姝畇g.payload 閺夈儴鍤滈弫鐗堝祦鐟欙絾鐎介弫鏉戞値閼哄倻鍋?{ info, basic, device, io }\n//  * 缁旀瑥褰块敍姘喘閸?raw.info.station_num閿涘苯鍙惧▎?msg.station_num閿涘牐袙閺嬫劖鏆ｉ崥鍫濆嚒鐢箑鍤敍澶涚礉娑撳秴鍟€娴ｈ法鏁?env.STATION_NUM\n//  * 閹镐椒绠欓崠鏍电窗last_state / last_hb 闁插洨鏁?file 鐎涙ê鍋嶉敍灞炬暜閹镐焦鏌囬悽鍨划婢跺硵n//  */\n\n// const raw = msg.payload || {};\n// const FARM = raw.info?.farm_num ?? env.get(\"FARM_NUM\") ?? \"test\";\n// const STATION = raw.info?.station_num ?? msg.station_num ?? \"01\";\n// const now = Date.now();\n// const HEARTBEAT_INTERVAL = 10000;//閸楁洑缍呭В顐ゎ潡\n\n// const b = raw.basic || {};\n// const d = raw.device || {};\n// const io = raw.io || {};\n\n// const current = {\n//     basic: {\n//         mode: b.mode ?? 0,\n//         vid: b.vid ?? \"\",\n//         eid: b.eid ?? \"\",\n//         weight: b.weight ?? 0\n//     },\n//     device: {\n//         cam: d.cam ?? 0,\n//         scale: d.scale ?? 0,\n//         rfid: d.rfid ?? 0,\n//         module: d.module ?? 0\n//     },\n//     io: {\n//         di: Array.isArray(io.di) ? io.di : [0,0,0,0,0,0],\n//         do: Array.isArray(io.do) ? io.do : [0,0,0,0,0],\n//         led: Array.isArray(io.led) ? io.led : [0,0,0]\n//     }\n// };\n\n// const deltaObj = (cur, last) => {\n//     const d = {};\n//     for (const k of Object.keys(cur)) {\n//         if (cur[k] !== last[k]) d[k] = cur[k];\n//     }\n//     return Object.keys(d).length ? d : null;\n// };\n// const deltaArr = (cur, last) => {\n//     if (!Array.isArray(cur) || !Array.isArray(last) || cur.length !== last.length) return cur;\n//     for (let i = 0; i < cur.length; i++) if (cur[i] !== last[i]) return cur;\n//     return null;\n// };\n\n// let last = context.get('last_state', 'file') || context.get('last_state') || { basic: {}, device: {}, io: {} };\n// let lastHeartbeat = context.get('last_hb', 'file');\n// if (lastHeartbeat === undefined || lastHeartbeat === null) {\n//     lastHeartbeat = context.get('last_hb') ?? 0;\n// }\n\n// let deltaPayload = {};\n// let changedPoints = [];\n\n// const db = deltaObj(current.basic || {}, last.basic || {});\n// if (db) {\n//     deltaPayload.basic = db;\n//     changedPoints.push(...Object.keys(db).map(k => `basic.${k}`));\n// }\n\n// const dd = deltaObj(current.device || {}, last.device || {});\n// if (dd) {\n//     deltaPayload.device = dd;\n//     changedPoints.push(...Object.keys(dd).map(k => `device.${k}`));\n// }\n\n// const diDelta = deltaArr(current.io?.di, last.io?.di);\n// if (diDelta) {\n//     deltaPayload.io = deltaPayload.io || {};\n//     deltaPayload.io.di = diDelta;\n//     changedPoints.push(\"io.di\");\n// }\n// const doDelta = deltaArr(current.io?.do, last.io?.do);\n// if (doDelta) {\n//     deltaPayload.io = deltaPayload.io || {};\n//     deltaPayload.io.do = doDelta;\n//     changedPoints.push(\"io.do\");\n// }\n// const ledDelta = deltaArr(current.io?.led, last.io?.led);\n// if (ledDelta) {\n//     deltaPayload.io = deltaPayload.io || {};\n//     deltaPayload.io.led = ledDelta;\n//     changedPoints.push(\"io.led\");\n// }\n\n// const hasChange = changedPoints.length > 0;\n// const isHeartbeat = (now - lastHeartbeat >= HEARTBEAT_INTERVAL);\n\n// if (hasChange || isHeartbeat) {\n//     const finalPayload = isHeartbeat ? current : deltaPayload;\n//     const finalChangedPoints = isHeartbeat ? undefined : (hasChange ? changedPoints : undefined);\n//     msg.payload = {\n//         info: { farm_num: FARM, station_num: STATION, timestamp: now },\n//         payload: finalPayload,\n//         is_heartbeat: isHeartbeat,\n//         changed_points: finalChangedPoints\n//     };\n//     msg.topic = `feed/${FARM}/telemetry`;\n\n//     context.set('last_state', current);\n//     context.set('last_state', current, 'file');\n//     if (isHeartbeat) {\n//         context.set('last_hb', now);\n//         context.set('last_hb', now, 'file');\n//     }\n\n//     node.status({\n//         fill: isHeartbeat ? \"blue\" : \"green\",\n//         shape: \"dot\",\n//         text: isHeartbeat ? \"heartbeat\" : `delta: ${changedPoints.join(\",\")}`\n//     });\n//     return msg;\n// }\n\n// return null;\n\n\n\n\n/**\n * V5.3_IIoT 婢х偤鍣洪弫鐗堝祦閺佹潙鎮庨崙鑺ユ殶 (Delta Dispatcher) - 閻愰€涚秴缁狙冨箵闁插硵n * 鏉堟挸鍙嗛敍姝畇g.payload 閺夈儴鍤滈弫鐗堝祦鐟欙絾鐎介弫鏉戞値閼哄倻鍋?{ info, basic, device, io }\n * 娑撳秳绶风挧?flow閿涘奔绮庨悽?context 閸?last_state 濮ｆ柨顕甛n * 閹镐椒绠欓崠鏍电窗last_state / last_hb 闁插洨鏁?file 鐎涙ê鍋嶉敍灞炬暜閹镐焦鏌囬悽鍨划婢跺硵n */\n\nconst raw = msg.payload || {};\nconst FARM = raw.info?.farm_num ?? env.get(\"FARM_NUM\") ?? \"test\";\nconst STATION = raw.info?.station_num ?? msg.station_num ?? \"01\";\nconst now = Date.now();\nconst HEARTBEAT_INTERVAL = 60;\n\nconst b = raw.basic || {};\nconst d = raw.device || {};\nconst io = raw.io || {};\n\nconst current = {\n    basic: {\n        mode: b.mode ?? 0,\n        vid: b.vid ?? \"\",\n        eid: b.eid ?? \"\",\n        weight: b.weight ?? 0,\n        feed_count: b.feed_count ?? 0\n    },\n    device: {\n        cam: d.cam ?? 0,\n        scale: d.scale ?? 0,\n        rfid: d.rfid ?? 0,\n        module: d.module ?? 0\n    },\n    io: {\n        di: Array.isArray(io.di) ? io.di : [0, 0, 0, 0, 0, 0],\n        do: Array.isArray(io.do) ? io.do : [0, 0, 0, 0, 0],\n        led: Array.isArray(io.led) ? io.led : [0, 0, 0]\n    }\n};\n\nconst deltaObj = (cur, last) => {\n    const d = {};\n    for (const k of Object.keys(cur)) {\n        if (cur[k] !== last[k]) d[k] = cur[k];\n    }\n    return Object.keys(d).length ? d : null;\n};\nconst deltaArr = (cur, last) => {\n    if (!Array.isArray(cur) || !Array.isArray(last) || cur.length !== last.length) return cur;\n    for (let i = 0; i < cur.length; i++) if (cur[i] !== last[i]) return cur;\n    return null;\n};\n\nlet last = context.get('last_state', 'file') || context.get('last_state') || { basic: {}, device: {}, io: {} };\nlet lastHeartbeat = context.get('last_hb', 'file');\nif (lastHeartbeat === undefined || lastHeartbeat === null) {\n    lastHeartbeat = context.get('last_hb') ?? 0;\n}\n\nlet deltaPayload = {};\nlet changedPoints = [];\n\nconst db = deltaObj(current.basic || {}, last.basic || {});\nif (db) {\n    deltaPayload.basic = db;\n    changedPoints.push(...Object.keys(db).map(k => `basic.${k}`));\n}\n\nconst dd = deltaObj(current.device || {}, last.device || {});\nif (dd) {\n    deltaPayload.device = dd;\n    changedPoints.push(...Object.keys(dd).map(k => `device.${k}`));\n}\n\nconst diDelta = deltaArr(current.io?.di, last.io?.di);\nif (diDelta) {\n    deltaPayload.io = deltaPayload.io || {};\n    deltaPayload.io.di = diDelta;\n    changedPoints.push(\"io.di\");\n}\nconst doDelta = deltaArr(current.io?.do, last.io?.do);\nif (doDelta) {\n    deltaPayload.io = deltaPayload.io || {};\n    deltaPayload.io.do = doDelta;\n    changedPoints.push(\"io.do\");\n}\nconst ledDelta = deltaArr(current.io?.led, last.io?.led);\nif (ledDelta) {\n    deltaPayload.io = deltaPayload.io || {};\n    deltaPayload.io.led = ledDelta;\n    changedPoints.push(\"io.led\");\n}\n\nconst hasChange = changedPoints.length > 0;\nconst isHeartbeat = (now - lastHeartbeat >= HEARTBEAT_INTERVAL);\n\nif (hasChange || isHeartbeat) {\n    const finalPayload = isHeartbeat ? current : deltaPayload;\n    const finalChangedPoints = isHeartbeat ? undefined : (hasChange ? changedPoints : undefined);\n    msg.payload = {\n        info: { farm_num: FARM, station_num: STATION, timestamp: now },\n        payload: finalPayload,\n        is_heartbeat: isHeartbeat,\n        changed_points: finalChangedPoints\n    };\n    msg.topic = `feed/${FARM}/telemetry`;\n\n    context.set('last_state', current);\n    context.set('last_state', current, 'file');\n    if (isHeartbeat) {\n        context.set('last_hb', now);\n        context.set('last_hb', now, 'file');\n    }\n\n    node.status({\n        fill: isHeartbeat ? \"blue\" : \"green\",\n        shape: \"dot\",\n        text: isHeartbeat ? \"heartbeat\" : `delta: ${changedPoints.join(\",\")}`\n    });\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2150,
+        "y": 380,
+        "wires": [
+            [
+                "0b2d7bc56eb85284",
+                "4806eb7137f4f23e"
+            ]
+        ]
+    },
+    {
+        "id": "d9f560cb57814997",
+        "type": "rbe",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1670,
+        "y": 220,
+        "wires": [
+            [
+                "4749ff74f7de9fbb"
+            ]
+        ]
+    },
+    {
+        "id": "8971453386fb4b52",
+        "type": "link out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "eb9fb0849c7b2048"
+        ],
+        "x": 2255,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7b9b20c065f62472",
+        "type": "link out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "d912db6e6e5135ad"
+        ],
+        "x": 2235,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "0b2d7bc56eb85284",
+        "type": "link out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "bb754c70cb675767"
+        ],
+        "x": 2325,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b0ae4b94e932f63e",
+        "type": "link out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link out 4",
+        "mode": "link",
+        "links": [
+            "7fc3dfe9e86840b4"
+        ],
+        "x": 1565,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "eac14f2414bdb4c4",
+        "type": "link out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link out 5",
+        "mode": "link",
+        "links": [
+            "c1c4a324cea505fd"
+        ],
+        "x": 1565,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "ed666b23d8f7bb81",
+        "type": "link out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link out 6",
+        "mode": "link",
+        "links": [
+            "350706bcb3e73023"
+        ],
+        "x": 1575,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2c0160b45889d90c",
+        "type": "link out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link out 7",
+        "mode": "link",
+        "links": [
+            "323b338954edec31"
+        ],
+        "x": 1585,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "442a92277c4a2440",
+        "type": "link in",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "link in 1",
+        "links": [
+            "02b135cd50529bb7"
+        ],
+        "x": 845,
+        "y": 380,
+        "wires": [
+            [
+                "32447efece5e33e2"
+            ]
+        ]
+    },
+    {
+        "id": "54c0f58df9a15463",
+        "type": "debug",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4806eb7137f4f23e",
+        "type": "mqtt out",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "閻樿埖鈧椒绗傞幎?",
+        "topic": "",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2805cf4abe65225e",
+        "x": 2420,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "4749ff74f7de9fbb",
+        "type": "join",
+        "z": "ace48f1fe8a31284",
+        "g": "iiot_test_group",
+        "name": "50ms 缁愭褰涢崥鍫濊嫙",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": true,
+        "accumulate": false,
+        "timeout": "0.05",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1720,
+        "y": 380,
+        "wires": [
+            [
+                "89c8494c5ac982cb",
+                "b4692ff5921814ce"
+            ]
+        ]
+    },
+    {
+        "id": "2805cf4abe65225e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "j0995c50.ala.cn-hangzhou.emqxsl.cn",
+        "port": "8883",
+        "tls": "cf8a366fdff359c8",
+        "clientid": "F004",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "5",
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "092c751cb058d246",
+        "type": "sqlitedb",
+        "db": "/opt/cow-detect/db/cow_detector.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "acq_v4_6_final",
+        "type": "subflow",
+        "name": "V4.6_閺嶅洤鍣柌鍥肠鐏?閸掑棛鐝涙潪顔款嚄)",
+        "info": "閸掑棛鐝涘蹇旂仸閺嬪嫸绱扮涵顑挎娴犲秵瀵?8DI/8DO 濡€虫健鏉烆喛顕楅敍灞肩稻闁槒绶稉濠佺矌娣囨繄鏆€閸?4 鐠?DI/DO 閻愰€涚秴閵?",
+        "category": "閼奉亜鐣炬稊?",
+        "in": [
+            {
+                "x": 60,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "v46_do_conv"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1620,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "v46_59c8c021dc180f7f",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1380,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "v46_3d6bea8e28bfeb98",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1640,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "v46_cf9358f0f164f766",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "IO_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "CZ_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "RFID_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "LED_IP",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "UNIT_ID",
+                "type": "num",
+                "value": "1"
+            },
+            {
+                "name": "STATION_NUM",
+                "type": "str",
+                "value": ""
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99",
+        "icon": "node-red/bridge.png"
+    },
+    {
+        "id": "v46_ticker",
+        "type": "inject",
+        "z": "acq_v4_6_final",
+        "name": "200ms鐟欙箑褰?",
+        "props": [],
+        "repeat": "0.2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "v46_2452439da843b9a4",
+                "v46_3061cec18cc95af4"
+            ]
+        ]
+    },
+    {
+        "id": "v46_get_di",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_6_final",
+        "name": "IO濡€虫健鐠囪褰?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "c43e0d2c7e297fce",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "v46_f22637065db44ac5"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "v46_get_weight",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_6_final",
+        "name": "缁変即鍣哥拠璇插絿",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "7cedcca290adff11",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 520,
+        "y": 200,
+        "wires": [
+            [
+                "v46_5f9e6f3403b05098"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "v46_get_rfid",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_6_final",
+        "name": "RFID鐠囪褰?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "c757b35fdd0236f4",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 520,
+        "y": 240,
+        "wires": [
+            [
+                "v46_6fcd174e518f2d30"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "v46_led_ascii",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "LED濞搭喚鍋ｆ潪鐝筍CII",
+        "func": "let num = msg.payload;\nlet str = (Math.round(num * 10) / 10).toFixed(1);\nif (str.length > 6) str = str.substring(0, 6);\n\nlet res = new Array(6).fill(48); // 婵夘偄鍘?ASCII '0'\nlet codes = [];\nfor (let i = 0; i < str.length; i++) codes.push(str.charCodeAt(i));\n\nconst offset = 6 - codes.length;\nfor (let i = 0; i < codes.length; i++) {\n    if (offset + i >= 0) res[offset + i] = codes[i];\n}\n\nmsg.payload = { value: res, fc: 16, unitid: 1, address: 0, quantity: 6 };\nreturn msg;",
+        "outputs": 1,
+        "x": 1170,
+        "y": 300,
+        "wires": [
+            [
+                "v46_led_write"
+            ]
+        ]
+    },
+    {
+        "id": "v46_led_write",
+        "type": "modbus-flex-write",
+        "z": "acq_v4_6_final",
+        "name": "LED閺勫墽銇氶崘娆忓弳",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "server": "abc5843d83e186e5",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 1390,
+        "y": 280,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "v46_do_conv",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "DO閹貉冨煑娑撳顢?",
+        "func": "/**\n * DO閹貉冨煑娑撳顢?(v4.6.0 閸ユ稖鐭鹃悧?\n * 鏉堟挸鍙嗛敍姝畇g.relays = { 闁插洭顥LY, 閸旂姵鏋LY, 濞撳懏鏋LY, 婢跺秳缍匯LY }\n * 鏉堟挸鍤敍姝乷dbus FC15 閸?鐠侯垳鍤庨崷?(address 0, quantity 8)\n * 鐠囧瓨妲戦敍姘扁€栨禒鏈电矝閺?8DO 濡€虫健閿涘奔绲鹃柅鏄忕帆娑撳﹣绮庢担璺ㄦ暏閸?4 鐠侯垽绱滵O[4-7] 閸ュ搫鐣炬稉?false\n */\nconst r = msg.relays;\nif (!r || typeof r !== 'object') return null;\n\nconst cur = [\n    !!r[\"闁插洭顥LY\"], // DO[0]\n    !!r[\"閸旂姵鏋LY\"], // DO[1]\n    !!r[\"濞撳懏鏋LY\"], // DO[2]\n    !!r[\"婢跺秳缍匯LY\"], // DO[3]\n    false,\n    false,\n    false,\n    false\n];\n\nlet last = context.get('L') || [];\nif (cur.every((v, i) => v === last[i])) return null;\n\ncontext.set('L', cur);\nmsg.payload = { value: cur, fc: 15, unitid: 1, address: 0, quantity: 8 };\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "v46_do_write"
+            ]
+        ]
+    },
+    {
+        "id": "v46_do_write",
+        "type": "modbus-flex-write",
+        "z": "acq_v4_6_final",
+        "name": "IO缁惧灝婀€閸愭瑥鍙?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "server": "c43e0d2c7e297fce",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 430,
+        "y": 60,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "v46_2452439da843b9a4",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "閸忋劑鍣洪崚鍡楀絺閸?",
+        "func": "const uid = env.get(\"UNIT_ID\") || 1;\nconst req = (fc, adr, qty) => ({ payload: { fc, address: adr, quantity: qty, unitid: uid } });\nreturn [\n    req(2, 0, 8),  // 缁旑垰褰?1 -> DI\n    req(3, 0, 3),  // 缁旑垰褰?2 -> 缁変即鍣竆n    req(3, 22, 10), // 缁旑垰褰?3 -> RFID\n    req(1, 0, 8)    // 缁旑垰褰?4 -> DO閻樿埖鈧礁娲栫拠?(閺傛澘顤?\n];",
+        "outputs": 4,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "v46_get_di"
+            ],
+            [
+                "v46_get_weight"
+            ],
+            [
+                "v46_get_rfid"
+            ],
+            [
+                "v46_2126a6be0ee5754c"
+            ]
+        ]
+    },
+    {
+        "id": "v46_2126a6be0ee5754c",
+        "type": "modbus-flex-getter",
+        "z": "acq_v4_6_final",
+        "name": "IO濡€虫健鐠囪褰?",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "c43e0d2c7e297fce",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "v46_4e3d7fa1becbb4f2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "v46_f22637065db44ac5",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "DI鏉炵悡opic",
+        "func": "const d = msg.responseBuffer.data || [];\nconst o = [];\n\n// V4.6閿涙氨鈥栨禒鏈电矝鐠囪褰?8DI閿涘奔绲鹃柅鏄忕帆娑撳﹣绮庢穱婵堟殌閸?4 鐠侯垵绶崗銉у仯娴ｅ硵no.push({ topic: \"sensor\", payload: !!d[0] });\no.push({ topic: \"feed\", payload: !!d[1] });\no.push({ topic: \"add\", payload: !!d[2] });\no.push({ topic: \"clear\", payload: !!d[3] });\n\nreturn [o];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 160,
+        "wires": [
+            [
+                "v46_2bf62d72ee3cb827",
+                "v46_3061cec18cc95af4",
+                "v46_3d6bea8e28bfeb98"
+            ]
+        ]
+    },
+    {
+        "id": "v46_5f9e6f3403b05098",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "缁変即鍣哥憴锝嗙€?",
+        "func": "let r=msg.payload[0]; let w;\nif(r>=32768) w=(r-65536)/10.0; else w=r/10.0;\nconst val = parseFloat(w.toFixed(2));\nreturn [{topic:\"weight\",payload:val}, {payload:val}];",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 220,
+        "wires": [
+            [
+                "v46_5a742488a0e735b1",
+                "v46_3061cec18cc95af4"
+            ],
+            [
+                "v46_led_ascii"
+            ]
+        ]
+    },
+    {
+        "id": "v46_6fcd174e518f2d30",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "RFID闁插秶绮?",
+        "func": "if(!msg.responseBuffer||!msg.responseBuffer.buffer)return null;\nconst b=msg.responseBuffer.buffer; const hT=b[0]; const fT=b[10]; let id=\"\";\nif(hT<0xFF){const c=((b[2]&0x0F)<<8)|b[3]; const t=parseInt([b[4],b[5],b[6],b[7],b[8]].map(x=>x.toString(16).padStart(2,'0')).join(''),16); id=c.toString().padStart(3,'0')+t.toString().padStart(12,'0');}\nelse if(fT<0xFF){const c=((b[12]&0x0F)<<8)|b[13]; const t=parseInt([b[14],b[15],b[16],b[17],b[18]].map(x=>x.toString(16).padStart(2,'0')).join(''),16); id=c.toString().padStart(3,'0')+t.toString().padStart(12,'0');}\nreturn id?{topic:\"rfid\",payload:id}:null;",
+        "outputs": 1,
+        "x": 940,
+        "y": 260,
+        "wires": [
+            [
+                "v46_2bf62d72ee3cb827",
+                "v46_3061cec18cc95af4"
+            ]
+        ]
+    },
+    {
+        "id": "v46_4e3d7fa1becbb4f2",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "DO閸ョ偠顕扮憴锝嗙€?",
+        "func": "return { topic: \"do_status\", payload: msg.responseBuffer.data };",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 300,
+        "wires": [
+            [
+                "v46_2bf62d72ee3cb827"
+            ]
+        ]
+    },
+    {
+        "id": "v46_2bf62d72ee3cb827",
+        "type": "rbe",
+        "z": "acq_v4_6_final",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1210,
+        "y": 180,
+        "wires": [
+            [
+                "v46_59c8c021dc180f7f"
+            ]
+        ]
+    },
+    {
+        "id": "v46_5a742488a0e735b1",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "濠娿倖灏?",
+        "func": "/**\n * 妤傛ɑ鈧嗗厴瀹搞儰绗熺粔浼村櫢濠娿倖灏濋崳?(V2.0 - 闂嗚泛娆㈡潻鐔奉杻瀵櫣澧?\n * 鐟欙絽鍠呴敍姝乷dbus 鏉烆喛顕楃敮锔芥降閻ㄥ嫭鏆熼幑顔界哺閸氬酣妫舵０姒巒 */\n\nconst weight_in = msg.payload;\nconst BUFFER_SIZE = 5;\nconst ALPHA = 0.4;          // 濠婄偛鎮楃化缁樻殶閿?.4 閸忓ジ銆愰獮铏拨娑撳酣鈧喎瀹砛nconst SNAP_THRESHOLD = 3.0; // 鐠哄啿褰夐梼鍫濃偓?kg)閵嗗倽绉存潻鍥劃閸婅壈顫嬫稉铏规埂鐎圭偛濮╂担婊愮礉缁斿宓嗛崫宥呯安\n\nlet buffer = context.get('b') || [];\nlet lastOut = context.get('l') || weight_in;\n\n// 1. 閵嗘劖鐗宠箛鍐╂簚閸掕翰鈧埊绱板Λ鈧ù瀣亣閼煎啫娲跨捄鍐插綁閿涘牏澧伴崣顏囩箻閸︾儤鍨ㄧ粋璇叉簚閿涘　n// 婵″倹鐏夐惉顒勬？鐠哄啿褰夌搾鍛扮箖 3kg閿涘苯鍨界€规矮璐熼惇鐔风杽閸斻劋缍旈敍灞肩瑝鏉╂稖顢戝銈嗗皾閿涘瞼娲块幒銉ㄧ翻閸戠nif (Math.abs(weight_in - lastOut) > SNAP_THRESHOLD) {\n    buffer = new Array(BUFFER_SIZE).fill(weight_in); // 闁插秶鐤嗙紓鎾冲暱閸栫n    context.set('b', buffer);\n    context.set('l', weight_in);\n    msg.payload = weight_in;\n    msg.filter_status = \"FAST_TRACK\"; // 閺嶅洩顔囨稉鍝勬彥鏉╂稒膩瀵猾n    return msg;\n}\n\n// 2. 鐢瓕顫夊銈嗗皾闁槒绶玕nbuffer.push(weight_in);\nif (buffer.length > BUFFER_SIZE) buffer.shift();\ncontext.set('b', buffer);\n\n// 娑擃厺缍呴崐鐓庨挬閸у槹nlet sorted = [...buffer].sort((a, b) => a - b);\nlet median = (sorted.length >= 3) ? (sorted[1] + sorted[2] + sorted[3])/3 : weight_in;\n\n// 娑撯偓闂冭埖绮搁崥宥緉let filtered = (ALPHA * median) + ((1 - ALPHA) * lastOut);\ncontext.set('l', filtered);\n\nmsg.payload = parseFloat(filtered.toFixed(2));\nmsg.filter_status = \"SMOOTHING\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 220,
+        "wires": [
+            [
+                "v46_2bf62d72ee3cb827"
+            ]
+        ]
+    },
+    {
+        "id": "v46_3061cec18cc95af4",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "鐠佹儳顦悩鑸碘偓浣藉殰鐠囧﹥鏌囬柅鏄忕帆",
+        "func": "/**\n * V5.1 鐠佹儳顦柅姘愁唵閻妫悪姊妌 * 娴ｆ粎鏁ら敍姘灲閺?Modbus 缁旀瑥褰?5-9 閻ㄥ嫬婀痪璺ㄥЦ閹箺n */\n\nconst now = Date.now();\nconst TIMEOUT = 2000; // 2缁夋帟绉撮弮璺哄灲鐎规瓡nconst states = context.get('states') || { mod: 0, scale: 0, rfid: 0 };\nconst timers = context.get('timers') || { mod: 0, scale: 0, rfid: 0 };\n\n// 1. 婢跺嫮鎮婇弫鐗堝祦娑撳﹥濮ら敍鍫濆煕閺傜増妞傞梻瀛樺煈閿涘　nif (msg.topic === \"sensor\" || msg.topic === \"do_status\") {\n    timers.mod = now;\n    states.mod = 1;\n} else if (msg.topic === \"weight\") {\n    timers.scale = now;\n    states.scale = 1;\n} else if (msg.topic === \"rfid\") {\n    timers.rfid = now;\n    states.rfid = 1;\n}\n\n// 2. 閸涖劍婀￠幀褎顥呴弻銉礄閻?200ms 鐟欙箑褰傞崳銊┾攳閸旑煉绱歕nif (!msg.topic) {\n    if (now - timers.mod > TIMEOUT) states.mod = 0;\n    if (now - timers.scale > TIMEOUT) states.scale = 0;\n    if (now - timers.rfid > TIMEOUT) states.rfid = 0;\n}\n\n// // 3. 閸愭瑥鍙嗛崗銊ョ湰閸欐﹢鍣洪敍灞筋嚠閹?UI 缂佽儻澹?缁俱垼澹婇弰鍓с仛\n// flow.set(\"Dev_Mod_OK\", states.mod);   // 閻愰€涚秴 9: 濡€虫健\n// flow.set(\"Dev_Scale_OK\", states.scale); // 閻愰€涚秴 7: 缁変即鍣竆n// flow.set(\"Dev_RFID_OK\", states.rfid);   // 閻愰€涚秴 8: RFID\n\ncontext.set('timers', timers);\ncontext.set('states', states);\n\n// 閻樿埖鈧礁褰夐崠鏍ㄦ閹靛秷绶崙鐚寸礉閻劋绨拫鍐槸\nif (msg.topic) return null;\nmsg.payload = states;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 120,
+        "wires": [
+            [
+                "v46_cf9358f0f164f766"
+            ]
+        ]
+    },
+    {
+        "id": "v46_cf9358f0f164f766",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1460,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "v46_59c8c021dc180f7f",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "v46_3d6bea8e28bfeb98",
+        "type": "function",
+        "z": "acq_v4_6_final",
+        "name": "濞ｈ濮炲銉ょ秴娣団剝浼?",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "v46_c43e0d2c7e297fce",
+        "type": "modbus-client",
+        "z": "acq_v4_6_final",
+        "name": "io濡€虫健",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${IO_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "v46_7cedcca290adff11",
+        "type": "modbus-client",
+        "z": "acq_v4_6_final",
+        "name": "缁変即鍣?",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${CZ_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "v46_c757b35fdd0236f4",
+        "type": "modbus-client",
+        "z": "acq_v4_6_final",
+        "name": "rfid",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${RFID_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "v46_abc5843d83e186e5",
+        "type": "modbus-client",
+        "z": "acq_v4_6_final",
+        "name": "led",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "${LED_IP}",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 30,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "0198c1218fd04793",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "?????",
+        "func": "const payload = msg.payload || {};\nconst dataType = payload.data_type;\nconst duration = Number(payload.intake_duration_in_second) || 0;\nconst intake = Number(payload.food_intake) || 0;\nconst rawMsg = { payload };\nlet filteredMsg = null;\nlet mqttMsg = null;\n\nif (dataType === \"feed\") {\n    if (duration > 20 && intake >= 0.2) {\n        filteredMsg = { payload };\n        mqttMsg = { payload };\n    }\n} else if (dataType === \"add\" || dataType === \"clear\") {\n    mqttMsg = { payload };\n}\n\nreturn [rawMsg, filteredMsg, mqttMsg];",
+        "outputs": 3,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 100,
+        "wires": [
+            [
+                "491a47bc89a1490a"
+            ],
+            [
+                "5d5395092f98eaca"
+            ],
+            [
+                "f856bac903264953"
+            ]
+        ]
+    },
+    {
+        "id": "491a47bc89a1490a",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "?????????",
+        "func": "const payload = msg.payload || {};\n\nfunction escapeText(value) {\n    if (value === null || value === undefined) return \"\";\n    return String(value).replace(/'/g, \"''\");\n}\n\nfunction asInteger(value) {\n    const num = Number(value);\n    return Number.isFinite(num) ? Math.trunc(num) : 0;\n}\n\nfunction asReal(value) {\n    const num = Number(value);\n    return Number.isFinite(num) ? num : 0;\n}\n\nconst finalSql = `INSERT INTO t_cattle_feed_intake_data_raw (\n    farm_num, station_num, cattle_vidnum, cattle_eidnum,\n    intake_date, intake_start_time, intake_end_time,\n    intake_duration_in_second, station_start_weight, station_end_weight, food_intake, data_type,\n    pic_url\n) VALUES (\n    '${escapeText(payload.farm_num)}', '${escapeText(payload.station_num)}', '${escapeText(payload.cattle_vidnum)}', '${escapeText(payload.cattle_eidnum)}',\n    '${escapeText(payload.intake_date)}', '${escapeText(payload.intake_start_time)}', '${escapeText(payload.intake_end_time)}',\n    ${asInteger(payload.intake_duration_in_second)}, ${asReal(payload.station_start_weight)}, ${asReal(payload.station_end_weight)}, ${asReal(payload.food_intake)}, '${escapeText(payload.data_type)}',\n    '${escapeText(payload.pic_url)}'\n);`;\n\nreturn { topic: finalSql, payload: msg.payload, station_num: msg.station_num };",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 120,
+        "wires": [
+            [
+                "670048a94b2f40b4"
+            ]
+        ]
+    },
+    {
+        "id": "f856bac903264953",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "MQTT?????",
+        "func": "const payload = msg.payload || {};\nreturn {\n    topic: `feed/data/${env.get(\"FARM_NUM\")}`,\n    payload,\n    station_num: msg.station_num\n};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 20,
+        "wires": [
+            [
+                "aa55c97c02bac7ca"
+            ]
+        ]
+    },
+    {
+        "id": "670048a94b2f40b4",
+        "type": "function",
+        "z": "1c733b6d9291fd92",
+        "name": "??????",
+        "func": "// 娴兼ê鍘涢悽銊ュ嚒閺堝鐡у▓纰夌礉閸忚埖顐奸悽銊у箚婢у啫褰夐柌蹇ョ礉閺堚偓閸氬骸鍘规惔鏄瀗const st = msg.station_num\n    || (msg.payload && msg.payload.station_num)\n    || env.get(\"STATION_NUM\")\n    || \"#L01\";\n\n// 妞よ泛鐪伴崗鍐╂殶閹诡噯绱版稉鎾绘，缂佹瑥顦垮銉ょ秴鐠侯垳鏁?閸掑洦宕查悽鈺榥msg.station_num = st;\n\nreturn msg;   // 濞夈劍鍓伴敍姘瑝鐟曚焦鏁?topic / payload / relays 缁?",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    }
+]
